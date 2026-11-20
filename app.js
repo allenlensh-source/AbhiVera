@@ -341,16 +341,20 @@ function updateWishlistBadges() {
   const navBadge = document.getElementById("wishlistNavCounter");
   const filterBadge = document.getElementById("wishlistCountFilter");
   const drawerBadge = document.getElementById("myWishlistDrawerCount");
+  const mobBadge = document.getElementById("mobileNavWishlistBadge");
 
   if (navBadge) navBadge.textContent = count;
   if (filterBadge) filterBadge.textContent = count;
   if (drawerBadge) drawerBadge.textContent = count;
+  if (mobBadge) mobBadge.textContent = count;
 }
 
 function updateActivityBadge() {
   const total = state.userBookings.length + state.userListings.length;
   const badge = document.getElementById("activityCounter");
+  const mobBadge = document.getElementById("mobileNavActivityBadge");
   if (badge) badge.textContent = total;
+  if (mobBadge) mobBadge.textContent = total;
 
   const myBookingsCount = document.getElementById("myBookingsCount");
   const myListingsCount = document.getElementById("myListingsCount");
@@ -404,6 +408,8 @@ function renderAuthUI() {
     if (navUserName) navUserName.textContent = firstName;
     if (memberWelcomeName) memberWelcomeName.textContent = firstName;
     if (navUserAvatar) navUserAvatar.textContent = initials;
+    const mobAvatar = document.getElementById("mobileNavAvatar");
+    if (mobAvatar) mobAvatar.textContent = initials;
     if (menuFullName) menuFullName.textContent = state.currentUser.fullName;
     if (menuEmail) menuEmail.textContent = state.currentUser.email || state.currentUser.phone;
     if (menuGovIdTag) menuGovIdTag.textContent = `${state.currentUser.govIdType} Verified`;
@@ -1739,6 +1745,53 @@ function initEventListeners() {
     tabWishlistBtn.addEventListener("click", () => {
       state.activeDrawerTab = "wishlist";
       renderActivityDrawer();
+    });
+  }
+
+  // ==================== MOBILE BOTTOM NAV LISTENERS ====================
+  const mobHomeBtn = document.getElementById("mobileNavHomeBtn");
+  const mobWishlistBtn = document.getElementById("mobileNavWishlistBtn");
+  const mobUploadBtn = document.getElementById("mobileNavUploadBtn");
+  const mobActivityBtn = document.getElementById("mobileNavActivityBtn");
+  const mobProfileBtn = document.getElementById("mobileNavProfileBtn");
+
+  function setActiveMobNav(activeBtn) {
+    document.querySelectorAll(".mobile-nav-btn").forEach(btn => btn.classList.remove("active"));
+    if (activeBtn) activeBtn.classList.add("active");
+  }
+
+  if (mobHomeBtn) {
+    mobHomeBtn.addEventListener("click", () => {
+      const target = document.getElementById("marketplace") || document.querySelector(".navbar");
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+      setActiveMobNav(mobHomeBtn);
+    });
+  }
+
+  if (mobWishlistBtn) {
+    mobWishlistBtn.addEventListener("click", () => {
+      openActivityDrawer("wishlist");
+      setActiveMobNav(mobWishlistBtn);
+    });
+  }
+
+  if (mobUploadBtn) {
+    mobUploadBtn.addEventListener("click", () => {
+      openUploadModal();
+    });
+  }
+
+  if (mobActivityBtn) {
+    mobActivityBtn.addEventListener("click", () => {
+      openActivityDrawer("rentals");
+      setActiveMobNav(mobActivityBtn);
+    });
+  }
+
+  if (mobProfileBtn) {
+    mobProfileBtn.addEventListener("click", () => {
+      openProfileModal();
+      setActiveMobNav(mobProfileBtn);
     });
   }
 

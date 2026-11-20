@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>ABHIVERA | Rent Everyday Home Appliances & Essentials Short-Term</title>
   <meta name="description" content="Vibrant peer-to-peer short-term rental marketplace for home appliances, electronics, utensils, and luxury linens. Verified neighbors & deposit protection.">
   
@@ -43,10 +43,10 @@
 
       <div class="nav-actions">
         <!-- Guest Quick Nav Links (Logged Out Only) -->
-        <nav class="logged-out-only" style="display: flex; gap: 1.25rem; font-weight: 700; font-size: 0.88rem; color: #52525b; margin-right: 0.5rem;">
-          <a href="#why-abhivera" style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-bullhorn" style="color: #ff385c;"></i> About ABHIVERA</a>
-          <a href="#advantages" style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-star" style="color: #f59e0b;"></i> Key Advantages</a>
-          <a href="#how-it-works" style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-route" style="color: #10b981;"></i> How It Works</a>
+        <nav class="guest-nav-links logged-out-only">
+          <a href="#why-abhivera"><i class="fa-solid fa-bullhorn" style="color: #c59b27;"></i> About ABHIVERA</a>
+          <a href="#advantages"><i class="fa-solid fa-star" style="color: #f59e0b;"></i> Key Advantages</a>
+          <a href="#how-it-works"><i class="fa-solid fa-route" style="color: #10b981;"></i> How It Works</a>
         </nav>
 
         <!-- Log In / Sign Up Button (Shown when logged out) -->
@@ -113,6 +113,13 @@
       </div>
     </div>
   </header>
+
+  <!-- Guest Quick Links Strip for Mobile Screens (Logged Out Only) -->
+  <div class="guest-mobile-subnav logged-out-only">
+    <a href="#why-abhivera" class="guest-subnav-chip"><i class="fa-solid fa-bullhorn" style="color: #c59b27;"></i> About</a>
+    <a href="#advantages" class="guest-subnav-chip"><i class="fa-solid fa-star" style="color: #f59e0b;"></i> Advantages</a>
+    <a href="#how-it-works" class="guest-subnav-chip"><i class="fa-solid fa-route" style="color: #10b981;"></i> How It Works</a>
+  </div>
 
   <!-- =====================================================================
        1. GUEST / ADVERTISING & ADVANTAGES SHOWCASE (SHOWN WHEN LOGGED OUT)
@@ -1123,6 +1130,40 @@
       </div>
     </div>
   </footer>
+
+  <!-- =====================================================================
+       MOBILE BOTTOM NAVIGATION BAR (LOGGED IN ONLY - FOR MOBILE/TABLET SCREENS)
+       ===================================================================== -->
+  <nav class="mobile-bottom-nav logged-in-only" id="mobileBottomNav" aria-label="Mobile Navigation">
+    <button type="button" class="mobile-nav-btn active" id="mobileNavHomeBtn" title="Explore Marketplace">
+      <i class="fa-solid fa-compass"></i>
+      <span>Explore</span>
+    </button>
+    <button type="button" class="mobile-nav-btn" id="mobileNavWishlistBtn" title="Saved Wishlist">
+      <div class="mobile-nav-icon-badge-wrap">
+        <i class="fa-solid fa-heart"></i>
+        <span class="mobile-nav-badge" id="mobileNavWishlistBadge">0</span>
+      </div>
+      <span>Wishlist</span>
+    </button>
+    <button type="button" class="mobile-nav-btn mobile-nav-btn-highlight" id="mobileNavUploadBtn" title="List an Item to Rent or Sell">
+      <div class="mobile-nav-add-icon">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+      <span>List Item</span>
+    </button>
+    <button type="button" class="mobile-nav-btn" id="mobileNavActivityBtn" title="Activity & Bookings">
+      <div class="mobile-nav-icon-badge-wrap">
+        <i class="fa-regular fa-clock-rotate-left"></i>
+        <span class="mobile-nav-badge" id="mobileNavActivityBadge">0</span>
+      </div>
+      <span>Activity</span>
+    </button>
+    <button type="button" class="mobile-nav-btn" id="mobileNavProfileBtn" title="My Profile & KYC">
+      <div class="user-avatar mobile-nav-avatar" id="mobileNavAvatar">U</div>
+      <span>Profile</span>
+    </button>
+  </nav>
 
   <!-- Application Logic -->
   <script src="app.js"></script>
