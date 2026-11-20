@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Order & Delivery | ABHIVERA Escrow Checkout</title>
+  <meta name="description" content="Secure escrow checkout for ABHIVERA peer-to-peer home appliance rentals and buyout orders.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Checkout Specific Enhanced Styling */
+    .checkout-page {
+      min-height: 100vh;
+      background-color: var(--bg-main);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .checkout-header {
+      background: #ffffff;
+      border-bottom: 2px solid #e8e2d5;
+      padding: 0.9rem 0;
+      box-shadow: 0 4px 18px rgba(11, 28, 54, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .checkout-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .secure-badge-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .checkout-hero-strip {
+      background: linear-gradient(135deg, #071224 0%, #0b1c36 60%, #16335f 100%);
+      color: #ffffff;
+      padding: 1.4rem 0;
+      border-bottom: 2px solid #c59b27;
+    }
+
+    .checkout-hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .checkout-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 390px;
+      gap: 2rem;
+      padding: 2.2rem 0 4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 992px) {
+      .checkout-main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .checkout-step-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.65rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(11, 28, 54, 0.04);
+      transition: border-color 0.2s ease;
+    }
+
+    .checkout-step-card:hover {
+      border-color: #d4af37;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1.5px solid #f3efe6;
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e6ca65 0%, #c59b27 100%);
+      color: #071224;
+      font-weight: 900;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(197, 155, 39, 0.35);
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0b1c36;
+      margin: 0;
+    }
+
+    .step-subtitle {
+      font-size: 0.82rem;
+      color: #5a6a80;
+      margin-top: 0.15rem;
+    }
+
+    /* Date Selection Visual Block */
+    .date-grid-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      background: #fdfbf7;
+      border: 1.5px solid #e8e2d5;
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .date-grid-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .date-field-group label {
+      font-weight: 800;
+      font-size: 0.88rem;
+      color: #0b1c36;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .date-field-sub {
+      font-size: 0.76rem;
+      color: #71717a;
+      margin-top: 0.25rem;
+    }
+
+    .time-slot-pill {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .time-slot-pill.active {
+      border-color: #c59b27;
+      background: #fef8e7;
+      color: #8c680a;
+      font-weight: 800;
+    }
+
+    .return-policy-alert {
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: var(--radius-md);
+      padding: 0.95rem 1.1rem;
+      font-size: 0.84rem;
+      color: #1e3a8a;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    /* Payment Method Tabs & Accordion */
+    .payment-methods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .payment-tab-btn {
+      padding: 0.85rem 0.65rem;
+      border: 1.5px solid #e8e2d5;
+      background: #fff;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.45rem;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: #0b1c36;
+      transition: all 0.2s ease;
+    }
+
+    .payment-tab-btn i {
+      font-size: 1.35rem;
+      color: #71717a;
+      transition: color 0.2s;
+    }
+
+    .payment-tab-btn:hover {
+      border-color: #c59b27;
+      background: #faf8f5;
+    }
+
+    .payment-tab-btn.active {
+      border-color: #c59b27;
+      background: #fef8e7;
+      color: #8c680a;
+      box-shadow: 0 0 0 2px rgba(197, 155, 39, 0.2);
+    }
+
+    .payment-tab-btn.active i {
+      color: #c59b27;
+    }
+
+    .payment-panel {
+      display: none;
+      background: #faf8f5;
+      border: 1.5px solid #e8e2d5;
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      animation: fadeIn 0.25s ease;
+    }
+
+    .payment-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Sticky Summary Card */
+    .summary-card {
+      background: #ffffff;
+      border: 2px solid #e2c266;
+      border-radius: var(--radius-lg);
+      padding: 1.65rem;
+      box-shadow: 0 10px 30px rgba(11, 28, 54, 0.08);
+      position: sticky;
+      top: 90px;
+    }
+
+    .summary-item-preview {
+      display: flex;
+      gap: 0.95rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1.5px dashed var(--border-color);
+    }
+
+    .summary-item-img {
+      width: 84px;
+      height: 84px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      border: 1.5px solid #e8e2d5;
+      background: #f4f4f5;
+      flex-shrink: 0;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      color: #5a6a80;
+      margin-bottom: 0.65rem;
+    }
+
+    .summary-row strong {
+      color: #0b1c36;
+    }
+
+    .summary-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0b1c36;
+      padding-top: 0.95rem;
+      margin-top: 0.95rem;
+      border-top: 2px solid #0b1c36;
+    }
+
+    .summary-total-amount {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #c59b27;
+    }
+
+    .deposit-badge-strip {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+      font-size: 0.8rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: var(--radius-sm);
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+    }
+
+    /* Success Order Modal / Overlay */
+    .success-view {
+      display: none;
+      background: #ffffff;
+      border: 2px solid #10b981;
+      border-radius: var(--radius-xl);
+      padding: 2.5rem 1.75rem;
+      text-align: center;
+      box-shadow: 0 15px 45px rgba(16, 185, 129, 0.15);
+      max-width: 680px;
+      margin: 2rem auto;
+    }
+
+    .success-icon-wrap {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: #ecfdf5;
+      color: #10b981;
+      border: 3px solid #10b981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin: 0 auto 1.25rem;
+      animation: popIn 0.35s ease-out;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .receipt-box {
+      background: #fdfbf7;
+      border: 1.5px dashed #c59b27;
+      border-radius: var(--radius-md);
+      padding: 1.45rem;
+      margin: 1.75rem 0;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid #f1ece1;
+    }
+    .receipt-row:last-child {
+      border-bottom: none;
+    }
+
+    .bank-quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+    .bank-quick-btn {
+      padding: 0.6rem;
+      border: 1px solid #e8e2d5;
+      background: #fff;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+    .bank-quick-btn:hover, .bank-quick-btn.active {
+      border-color: #c59b27;
+      background: #fef8e7;
+      color: #8c680a;
+    }
+  </style>
+</head>
+<body class="checkout-page">
+
+  <!-- Header -->
+  <header class="checkout-header">
+    <div class="container checkout-header-inner">
+      <a href="index.html" class="brand-logo" title="Back to ABHIVERA">
+        <img src="assets/logo.jpg" alt="ABHIVERA Logo" class="brand-logo-img">
+        <div class="brand-text-block">
+          <span class="brand-title">ABHI<span class="brand-highlight">VERA</span></span>
+          <span class="nav-tagline">Rent • Lend • Sell as Rent</span>
+        </div>
+      </a>
+
+      <div class="secure-badge-header">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>100% Escrow Protected Booking</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Strip -->
+  <section class="checkout-hero-strip">
+    <div class="container checkout-hero-inner">
+      <div>
+        <h1 style="font-size: 1.6rem; font-weight: 900; margin: 0; line-height: 1.2;">
+          <i class="fa-solid fa-cart-shopping" style="color: #e6ca65; margin-right: 0.45rem;"></i>
+          Instant Checkout & Delivery Scheduling
+        </h1>
+        <p style="margin: 0.35rem 0 0; font-size: 0.9rem; opacity: 0.9;">
+          Review rental dates, specify doorstep delivery address, and choose your preferred payment method.
+        </p>
+      </div>
+      <div>
+        <a href="index.html" class="btn btn-outline" style="font-size: 0.82rem; padding: 0.45rem 0.95rem; background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.4);">
+          <i class="fa-solid fa-arrow-left"></i> Back to Marketplace
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <main class="container">
+    
+    <!-- SUCCESS CONFIRMATION VIEW (Hidden until submitted) -->
+    <div id="orderSuccessView" class="success-view">
+      <div class="success-icon-wrap">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h2 style="font-size: 1.75rem; font-weight: 900; color: #0b1c36; margin-bottom: 0.35rem;">
+        Order Placed & Escrow Secured!
+      </h2>
+      <p style="font-size: 0.95rem; color: #5a6a80; max-width: 520px; margin: 0 auto;">
+        Your rental booking has been verified. The lender and our delivery dispatch have received your order details.
+      </p>
+
+      <div class="receipt-box" id="successReceiptDetails">
+        <!-- Injected via JS -->
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <button type="button" class="btn btn-primary" onclick="window.print()">
+          <i class="fa-solid fa-print"></i> Print Receipt
+        </button>
+        <a href="index.html" class="btn btn-outline" style="border-color: #0b1c36; color: #0b1c36; font-weight: 700;">
+          <i class="fa-solid fa-house"></i> Return to Homepage
+        </a>
+        <button type="button" class="btn btn-accent" onclick="window.close()">
+          <i class="fa-solid fa-xmark"></i> Close Tab
+        </button>
+      </div>
+    </div>
+
+    <!-- CHECKOUT FORM & SUMMARY (Default active) -->
+    <form id="checkoutForm" class="checkout-main-grid" onsubmit="handleCheckoutSubmit(event)">
+      
+      <!-- LEFT COLUMN: Forms -->
+      <div class="checkout-steps-column">
+        
+        <!-- STEP 1: RENTAL DATES & RETURNING SCHEDULE -->
+        <div class="checkout-step-card">
+          <div class="step-header">
+            <span class="step-number">1</span>
+            <div>
+              <h2 class="step-title">From Date of Renting to Last Date of Renting & Returning</h2>
+              <div class="step-subtitle">Specify when you need the item and your scheduled return date</div>
+            </div>
+          </div>
+
+          <!-- Order Mode Toggle (Rent vs Buyout if applicable) -->
+          <div id="orderModeToggleBox" style="display: none; margin-bottom: 1.25rem; background: #fef8e7; border: 1.5px solid #e2c266; padding: 0.85rem 1rem; border-radius: var(--radius-md);">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+              <div>
+                <strong style="color: #8c680a; font-size: 0.88rem; display: block;">
+                  <i class="fa-solid fa-tags"></i> This item is available for Outright Buyout!
+                </strong>
+                <span style="font-size: 0.78rem; color: #5a6a80;">You can rent short-term or buy it permanently to keep forever.</span>
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.84rem; font-weight: 700; cursor: pointer;">
+                  <input type="radio" name="orderType" value="rent" id="typeRentRadio" checked onchange="handleOrderTypeChange()">
+                  Short-Term Rental
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.35rem; font-size: 0.84rem; font-weight: 700; cursor: pointer;">
+                  <input type="radio" name="orderType" value="buyout" id="typeBuyoutRadio" onchange="handleOrderTypeChange()">
+                  Outright Buyout
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dates Box -->
+          <div id="rentalDatesSection">
+            <div class="date-grid-box">
+              <div class="date-field-group">
+                <label for="rentStartDate">
+                  <i class="fa-solid fa-calendar-day" style="color: var(--primary-color);"></i>
+                  From Date of Renting (Delivery) <span class="req" style="color: #dc2626;">*</span>
+                </label>
+                <input type="date" id="rentStartDate" class="form-input" required onchange="calculateCheckoutTotals()">
+                <div class="date-field-sub">When should our courier deliver the item to you?</div>
+                
+                <div style="margin-top: 0.65rem;">
+                  <span style="font-size: 0.75rem; font-weight: 700; color: #5a6a80; display: block; margin-bottom: 0.25rem;">Preferred Handover Slot:</span>
+                  <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+                    <span class="time-slot-pill active" onclick="selectSlot(this, 'startSlotInput', '09:00 AM - 12:00 PM')">Morning (9am - 12pm)</span>
+                    <span class="time-slot-pill" onclick="selectSlot(this, 'startSlotInput', '12:00 PM - 04:00 PM')">Afternoon (12pm - 4pm)</span>
+                    <span class="time-slot-pill" onclick="selectSlot(this, 'startSlotInput', '04:00 PM - 08:00 PM')">Evening (4pm - 8pm)</span>
+                  </div>
+                  <input type="hidden" id="startSlotInput" value="09:00 AM - 12:00 PM">
+                </div>
+              </div>
+
+              <div class="date-field-group">
+                <label for="rentEndDate">
+                  <i class="fa-solid fa-rotate-left" style="color: #c59b27;"></i>
+                  Last Date of Renting & Returning <span class="req" style="color: #dc2626;">*</span>
+                </label>
+                <input type="date" id="rentEndDate" class="form-input" required onchange="calculateCheckoutTotals()">
+                <div class="date-field-sub">Scheduled pickup date when the item will be returned</div>
+
+                <div style="margin-top: 0.65rem;">
+                  <span style="font-size: 0.75rem; font-weight: 700; color: #5a6a80; display: block; margin-bottom: 0.25rem;">Preferred Return Slot:</span>
+                  <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+                    <span class="time-slot-pill active" onclick="selectSlot(this, 'endSlotInput', '09:00 AM - 12:00 PM')">Morning (9am - 12pm)</span>
+                    <span class="time-slot-pill" onclick="selectSlot(this, 'endSlotInput', '12:00 PM - 04:00 PM')">Afternoon (12pm - 4pm)</span>
+                    <span class="time-slot-pill" onclick="selectSlot(this, 'endSlotInput', '04:00 PM - 08:00 PM')">Evening (4pm - 8pm)</span>
+                  </div>
+                  <input type="hidden" id="endSlotInput" value="09:00 AM - 12:00 PM">
+                </div>
+              </div>
+            </div>
+
+            <!-- Duration Summary Strip -->
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #faf8f5; border: 1px solid #e8e2d5; padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.88rem;">
+              <div>
+                <i class="fa-solid fa-clock-rotate-left" style="color: #c59b27; margin-right: 0.35rem;"></i>
+                Calculated Rental Duration: <strong id="calculatedDaysText" style="color: #0b1c36;">1 Day</strong>
+              </div>
+              <div style="color: #065f46; font-weight: 700; font-size: 0.82rem;">
+                <i class="fa-solid fa-check-double"></i> Free Return Pickup Included
+              </div>
+            </div>
+
+            <!-- Return agreement clause -->
+            <div class="return-policy-alert">
+              <i class="fa-solid fa-circle-info" style="font-size: 1.25rem; color: #2563eb; flex-shrink: 0; margin-top: 0.1rem;"></i>
+              <div>
+                <strong>Safe Return & Deposit Guarantee:</strong> Our verified concierge will arrive at your address on the last date of renting to perform a 2-minute condition inspection. Your 100% refundable security deposit of <strong id="alertDepositText">₹500</strong> is refunded instantly to your original payment source upon return.
+              </div>
+            </div>
+
+            <div style="margin-top: 0.85rem;">
+              <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.82rem; color: #5a6a80; cursor: pointer;">
+                <input type="checkbox" id="returnAgreementCheck" required checked style="margin-top: 0.2rem;">
+                <span>I confirm that I will return the rented item in clean, undamaged condition with all accessories on or before the scheduled return date.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Buyout note if buyout mode is selected -->
+          <div id="buyoutDetailsNotice" style="display: none; padding: 1.25rem; background: #fdfbf7; border: 1.5px solid #c59b27; border-radius: var(--radius-md);">
+            <div style="display: flex; gap: 0.75rem; align-items: center;">
+              <i class="fa-solid fa-trophy" style="font-size: 1.8rem; color: #c59b27;"></i>
+              <div>
+                <h4 style="font-size: 1.05rem; font-weight: 800; color: #0b1c36; margin: 0 0 0.25rem;">Outright Permanent Ownership (Buyout)</h4>
+                <p style="font-size: 0.85rem; color: #5a6a80; margin: 0;">You are purchasing this appliance permanently! No return required. Delivery will be scheduled on your selected handover date below.</p>
+              </div>
+            </div>
+            <div style="margin-top: 1rem;">
+              <label for="buyoutDeliveryDate" style="font-weight: 800; font-size: 0.85rem; display: block; margin-bottom: 0.35rem;">
+                Desired Delivery Date:
+              </label>
+              <input type="date" id="buyoutDeliveryDate" class="form-input" style="max-width: 250px;">
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: DELIVERY ADDRESS -->
+        <div class="checkout-step-card">
+          <div class="step-header">
+            <span class="step-number">2</span>
+            <div>
+              <h2 class="step-title">Delivery Address & Contact Details</h2>
+              <div class="step-subtitle">Where should our courier hand over the appliance and collect it upon return?</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label class="form-label" for="custFullName">
+                Full Name <span class="req" style="color: #dc2626;">*</span>
+              </label>
+              <input type="text" id="custFullName" class="form-input" placeholder="e.g. Rahul Sharma" required>
+            </div>
+
+            <div>
+              <label class="form-label" for="custPhone">
+                Mobile Number (for delivery OTP) <span class="req" style="color: #dc2626;">*</span>
+              </label>
+              <input type="tel" id="custPhone" class="form-input" placeholder="e.g. 98765 43210" pattern="[0-9]{10}" maxlength="10" required>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <label class="form-label" for="custAddress">
+              House / Flat / Apartment No., Building Name & Street <span class="req" style="color: #dc2626;">*</span>
+            </label>
+            <input type="text" id="custAddress" class="form-input" placeholder="e.g. Flat 402, Golden Palms Apts, 12th Cross Road" required>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label class="form-label" for="custLandmark">
+                Area, Landmark or Neighborhood <span class="req" style="color: #dc2626;">*</span>
+              </label>
+              <input type="text" id="custLandmark" class="form-input" placeholder="e.g. Near Indiranagar 100ft Rd / Metro" required>
+            </div>
+
+            <div>
+              <label class="form-label" for="custPincode">
+                PIN Code <span class="req" style="color: #dc2626;">*</span>
+              </label>
+              <input type="text" id="custPincode" class="form-input" placeholder="e.g. 560038" maxlength="6" pattern="[0-9]{6}" required>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label class="form-label" for="custCity">
+                City <span class="req" style="color: #dc2626;">*</span>
+              </label>
+              <input type="text" id="custCity" class="form-input" value="Bengaluru" required>
+            </div>
+
+            <div>
+              <label class="form-label" for="custState">
+                State <span class="req" style="color: #dc2626;">*</span>
+              </label>
+              <input type="text" id="custState" class="form-input" value="Karnataka" required>
+            </div>
+          </div>
+
+          <!-- Address Type Tags -->
+          <div style="margin-bottom: 1rem;">
+            <label class="form-label" style="margin-bottom: 0.35rem;">Address Type:</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <span class="time-slot-pill active" onclick="selectSlot(this, 'addressTypeInput', 'Home')"><i class="fa-solid fa-house"></i> Home</span>
+              <span class="time-slot-pill" onclick="selectSlot(this, 'addressTypeInput', 'Office')"><i class="fa-solid fa-building"></i> Office / Workplace</span>
+              <span class="time-slot-pill" onclick="selectSlot(this, 'addressTypeInput', 'Other')"><i class="fa-solid fa-location-dot"></i> Other</span>
+            </div>
+            <input type="hidden" id="addressTypeInput" value="Home">
+          </div>
+
+          <div>
+            <label class="form-label" for="custDeliveryNotes">
+              Delivery & Entry Instructions (Optional)
+            </label>
+            <input type="text" id="custDeliveryNotes" class="form-input" placeholder="e.g. Call before arrival, leave at tower gate 2 with security">
+          </div>
+        </div>
+
+        <!-- STEP 3: PAYMENT METHOD -->
+        <div class="checkout-step-card">
+          <div class="step-header">
+            <span class="step-number">3</span>
+            <div>
+              <h2 class="step-title">Choose Payment Method</h2>
+              <div class="step-subtitle">Funds are protected in ABHIVERA escrow until safe physical delivery</div>
+            </div>
+          </div>
+
+          <!-- Payment Tabs -->
+          <div class="payment-methods-grid">
+            <button type="button" class="payment-tab-btn active" data-method="upi" onclick="switchPaymentMethod('upi')">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <span>UPI / QR</span>
+            </button>
+            <button type="button" class="payment-tab-btn" data-method="card" onclick="switchPaymentMethod('card')">
+              <i class="fa-regular fa-credit-card"></i>
+              <span>Cards</span>
+            </button>
+            <button type="button" class="payment-tab-btn" data-method="netbanking" onclick="switchPaymentMethod('netbanking')">
+              <i class="fa-solid fa-building-columns"></i>
+              <span>Net Banking</span>
+            </button>
+            <button type="button" class="payment-tab-btn" data-method="cod" onclick="switchPaymentMethod('cod')">
+              <i class="fa-solid fa-hand-holding-dollar"></i>
+              <span>Pay on Handover</span>
+            </button>
+          </div>
+
+          <input type="hidden" id="selectedPaymentMethod" value="UPI / Instant QR">
+
+          <!-- PANEL 1: UPI -->
+          <div id="paymentPanel-upi" class="payment-panel active">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+              <span style="font-weight: 800; font-size: 0.88rem; color: #0b1c36;">Instant UPI Payment (Zero Surcharge)</span>
+              <span style="font-size: 0.78rem; color: #065f46; font-weight: 700; background: #ecfdf5; padding: 0.2rem 0.5rem; border-radius: 4px;">Verified Fast Refund</span>
+            </div>
+
+            <div style="margin-bottom: 0.85rem;">
+              <label class="form-label" for="upiIdInput">Enter UPI ID (VPA):</label>
+              <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="upiIdInput" class="form-input" placeholder="e.g. mobile@okaxis, user@okhdfcbank" value="user@okhdfcbank">
+                <button type="button" class="btn btn-outline" style="white-space: nowrap; font-size: 0.82rem;" onclick="verifyUPI()">Verify</button>
+              </div>
+              <span id="upiStatusText" style="font-size: 0.76rem; color: #10b981; font-weight: 700; display: block; margin-top: 0.25rem;">
+                <i class="fa-solid fa-circle-check"></i> UPI ID Verified & linked to Escrow Gateway
+              </span>
+            </div>
+
+            <!-- UPI Quick Apps -->
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; padding-top: 0.5rem; border-top: 1px solid #e8e2d5;">
+              <span style="font-size: 0.78rem; font-weight: 700; color: #5a6a80;">Supported Apps:</span>
+              <span style="background: #fff; border: 1px solid #e8e2d5; border-radius: 4px; padding: 0.2rem 0.5rem; font-size: 0.76rem; font-weight: 700; color: #4285f4;"><i class="fa-brands fa-google"></i> Google Pay</span>
+              <span style="background: #fff; border: 1px solid #e8e2d5; border-radius: 4px; padding: 0.2rem 0.5rem; font-size: 0.76rem; font-weight: 700; color: #5f259f;"><i class="fa-solid fa-bolt"></i> PhonePe</span>
+              <span style="background: #fff; border: 1px solid #e8e2d5; border-radius: 4px; padding: 0.2rem 0.5rem; font-size: 0.76rem; font-weight: 700; color: #002970;"><i class="fa-solid fa-wallet"></i> Paytm</span>
+              <span style="background: #fff; border: 1px solid #e8e2d5; border-radius: 4px; padding: 0.2rem 0.5rem; font-size: 0.76rem; font-weight: 700; color: #0b1c36;"><i class="fa-solid fa-building-columns"></i> BHIM</span>
+            </div>
+          </div>
+
+          <!-- PANEL 2: CREDIT / DEBIT CARD -->
+          <div id="paymentPanel-card" class="payment-panel">
+            <div style="margin-bottom: 0.85rem;">
+              <label class="form-label" for="cardNumberInput">Card Number</label>
+              <div style="position: relative;">
+                <input type="text" id="cardNumberInput" class="form-input" placeholder="4532 •••• •••• 8892" maxlength="19" value="4532 8920 1142 8892">
+                <i class="fa-regular fa-credit-card" style="position: absolute; right: 12px; top: 12px; color: #94a3b8; font-size: 1.1rem;"></i>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.85rem; margin-bottom: 0.85rem;">
+              <div>
+                <label class="form-label" for="cardHolderInput">Name on Card</label>
+                <input type="text" id="cardHolderInput" class="form-input" placeholder="e.g. RAHUL SHARMA" value="RAHUL SHARMA">
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem;">
+                <div>
+                  <label class="form-label" for="cardExpiryInput">Expiry</label>
+                  <input type="text" id="cardExpiryInput" class="form-input" placeholder="MM/YY" maxlength="5" value="08/28">
+                </div>
+                <div>
+                  <label class="form-label" for="cardCvvInput">CVV</label>
+                  <input type="password" id="cardCvvInput" class="form-input" placeholder="•••" maxlength="4" value="821">
+                </div>
+              </div>
+            </div>
+
+            <div style="font-size: 0.78rem; color: #71717a; display: flex; align-items: center; gap: 0.4rem;">
+              <i class="fa-solid fa-lock" style="color: #10b981;"></i>
+              <span>PCI-DSS Level 1 Encrypted. Card details are never stored unencrypted.</span>
+            </div>
+          </div>
+
+          <!-- PANEL 3: NET BANKING -->
+          <div id="paymentPanel-netbanking" class="payment-panel">
+            <label class="form-label">Popular Indian Banks:</label>
+            <div class="bank-quick-grid">
+              <button type="button" class="bank-quick-btn active" onclick="selectBank(this, 'HDFC Bank')"><i class="fa-solid fa-building-columns"></i> HDFC</button>
+              <button type="button" class="bank-quick-btn" onclick="selectBank(this, 'State Bank of India')"><i class="fa-solid fa-building-columns"></i> SBI</button>
+              <button type="button" class="bank-quick-btn" onclick="selectBank(this, 'ICICI Bank')"><i class="fa-solid fa-building-columns"></i> ICICI</button>
+              <button type="button" class="bank-quick-btn" onclick="selectBank(this, 'Axis Bank')"><i class="fa-solid fa-building-columns"></i> Axis</button>
+              <button type="button" class="bank-quick-btn" onclick="selectBank(this, 'Kotak Mahindra')"><i class="fa-solid fa-building-columns"></i> Kotak</button>
+              <button type="button" class="bank-quick-btn" onclick="selectBank(this, 'Bank of Baroda')"><i class="fa-solid fa-building-columns"></i> BOB</button>
+            </div>
+            <input type="hidden" id="selectedBankInput" value="HDFC Bank">
+
+            <label class="form-label" for="allBanksSelect">Or Select Another Bank:</label>
+            <select id="allBanksSelect" class="form-select" onchange="document.getElementById('selectedBankInput').value = this.value">
+              <option value="">-- Choose from 50+ Banks --</option>
+              <option value="Punjab National Bank">Punjab National Bank</option>
+              <option value="Canara Bank">Canara Bank</option>
+              <option value="Union Bank of India">Union Bank of India</option>
+              <option value="IndusInd Bank">IndusInd Bank</option>
+              <option value="IDBI Bank">IDBI Bank</option>
+              <option value="Federal Bank">Federal Bank</option>
+            </select>
+          </div>
+
+          <!-- PANEL 4: CASH ON DELIVERY / HANDOVER -->
+          <div id="paymentPanel-cod" class="payment-panel">
+            <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
+              <i class="fa-solid fa-handshake-simple" style="font-size: 1.8rem; color: #10b981; margin-top: 0.15rem;"></i>
+              <div>
+                <strong style="color: #0b1c36; font-size: 0.95rem; display: block; margin-bottom: 0.25rem;">
+                  Pay on Handover & Physical Inspection
+                </strong>
+                <p style="font-size: 0.84rem; color: #5a6a80; line-height: 1.45; margin: 0;">
+                  Inspect the appliance personally when our delivery executive arrives. Once you test and verify it, pay via UPI QR or Cash right at your doorstep. Security deposit is safely registered on the ABHIVERA ledger.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Order Summary & Pay CTA -->
+      <aside class="checkout-summary-column">
+        <div class="summary-card">
+          <h3 style="font-size: 1.15rem; font-weight: 800; color: #0b1c36; margin: 0 0 1rem; display: flex; align-items: center; justify-content: space-between;">
+            <span>Order Summary</span>
+            <span id="orderTypeBadge" style="font-size: 0.72rem; background: #fef8e7; color: #8c680a; border: 1px solid #e2c266; padding: 0.2rem 0.55rem; border-radius: 999px;">
+              Rental
+            </span>
+          </h3>
+
+          <!-- Item Preview -->
+          <div class="summary-item-preview">
+            <img id="summaryItemImg" src="" alt="Appliance Item" class="summary-item-img">
+            <div style="flex: 1; min-width: 0;">
+              <span id="summaryItemCategory" class="item-category-tag-floating" style="font-size: 0.68rem; padding: 0.15rem 0.45rem; margin-bottom: 0.25rem; display: inline-block;">Category</span>
+              <h4 id="summaryItemTitle" style="font-size: 0.95rem; font-weight: 800; color: #0b1c36; line-height: 1.25; margin: 0 0 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                Loading Appliance...
+              </h4>
+              <div style="font-size: 0.78rem; color: #71717a;">
+                Lender: <strong id="summaryItemOwner" style="color: #0b1c36;">Verified Neighbor</strong>
+              </div>
+              <div style="font-size: 0.78rem; color: #71717a;">
+                Location: <span id="summaryItemLocation">Bangalore</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Schedule Strip -->
+          <div style="background: #faf8f5; border: 1px solid #e8e2d5; border-radius: var(--radius-sm); padding: 0.75rem; margin-bottom: 1rem; font-size: 0.8rem;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+              <span style="color: #71717a;">From (Delivery):</span>
+              <strong id="summaryStartDateText" style="color: #0b1c36;">Today</strong>
+            </div>
+            <div id="summaryReturnDateRow" style="display: flex; justify-content: space-between;">
+              <span style="color: #71717a;">Return Date:</span>
+              <strong id="summaryEndDateText" style="color: #c59b27;">Tomorrow</strong>
+            </div>
+          </div>
+
+          <!-- Price Breakdown -->
+          <div class="summary-row" id="rowRentalDuration">
+            <span>Duration:</span>
+            <strong id="summaryDurationText">1 Day</strong>
+          </div>
+
+          <div class="summary-row" id="rowDailyRate">
+            <span>Rate per Day:</span>
+            <strong id="summaryRatePerDay">₹150</strong>
+          </div>
+
+          <div class="summary-row" id="rowRentSubtotal">
+            <span>Rent Subtotal:</span>
+            <strong id="summaryRentSubtotal">₹150</strong>
+          </div>
+
+          <div class="summary-row" id="rowDeposit">
+            <span>Security Deposit (Refundable):</span>
+            <strong id="summaryDeposit">₹500</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Doorstep Delivery & Return:</span>
+            <strong style="color: #10b981;"><del style="color: #a1a1aa; font-weight: 400; margin-right: 0.25rem;">₹150</del> FREE</strong>
+          </div>
+
+          <div class="summary-row">
+            <span>Escrow Protection Fee:</span>
+            <strong style="color: #10b981;">₹0 (Free)</strong>
+          </div>
+
+          <div class="summary-total-row">
+            <div>
+              <span style="display: block;">Total Payable Now</span>
+              <span style="font-size: 0.72rem; color: #71717a; font-weight: 500;">Includes refundable deposit</span>
+            </div>
+            <span class="summary-total-amount" id="summaryTotalDue">₹650</span>
+          </div>
+
+          <!-- Deposit notice banner -->
+          <div class="deposit-badge-strip" id="summaryDepositBadge">
+            <i class="fa-solid fa-shield-heart" style="font-size: 1.1rem; color: #10b981; flex-shrink: 0;"></i>
+            <span>Deposit of <strong id="summaryBadgeDepositAmt">₹500</strong> is 100% refunded when returned!</span>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary" id="submitOrderBtn" style="width: 100%; padding: 0.95rem; font-size: 1.05rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.75rem;">
+            <i class="fa-solid fa-lock"></i>
+            <span id="submitBtnText">Confirm Order & Pay ₹650</span>
+          </button>
+
+          <div style="text-align: center; margin-top: 0.85rem; font-size: 0.74rem; color: #71717a; display: flex; align-items: center; justify-content: center; gap: 0.4rem;">
+            <i class="fa-solid fa-shield-halved" style="color: #c59b27;"></i>
+            <span>ABHIVERA Escrow Protection Guarantee</span>
+          </div>
+        </div>
+      </aside>
+
+    </form>
+  </main>
+
+  <!-- Checkout Logic Script -->
+  <script>
+    // Storage Keys aligned with app.js
+    const STORAGE_KEYS = {
+      ITEMS: "abhivera_items_v4",
+      USER_BOOKINGS: "abhivera_user_bookings_v4",
+      CURRENT_USER: "abhivera_current_user_v4"
+    };
+
+    let activeItem = null;
+    let orderMode = "rent"; // "rent" or "buyout"
+
+    // On Load: parse query parameters & populate forms
+    document.addEventListener("DOMContentLoaded", () => {
+      initCheckoutPage();
+    });
+
+    function initCheckoutPage() {
+      const params = new URLSearchParams(window.location.search);
+      const itemId = params.get("itemId") || "item-1";
+      const startParam = params.get("startDate");
+      const endParam = params.get("endDate");
+      const modeParam = params.get("mode");
+
+      // Load item details
+      loadItemData(itemId);
+
+      // Setup default dates
+      setupDatePickers(startParam, endParam);
+
+      // Pre-fill user details if logged in
+      prefillUserData();
+
+      // Check mode
+      if (modeParam === "buyout" && activeItem && activeItem.sellAsRent) {
+        orderMode = "buyout";
+        const buyoutRadio = document.getElementById("typeBuyoutRadio");
+        if (buyoutRadio) buyoutRadio.checked = true;
+      }
+
+      handleOrderTypeChange();
+      calculateCheckoutTotals();
+    }
+
+    function loadItemData(itemId) {
+      let items = [];
+      const stored = localStorage.getItem(STORAGE_KEYS.ITEMS);
+      if (stored) {
+        try {
+          items = JSON.parse(stored);
+        } catch(e) {
+          items = [];
+        }
+      }
+
+      activeItem = items.find(i => i.id === itemId);
+
+      // Fallback fallback defaults if opened directly without localstorage seed
+      if (!activeItem) {
+        activeItem = {
+          id: itemId || "item-1",
+          title: "Philips 750W Mixer Grinder (3 Jars)",
+          category: "Kitchen Appliances",
+          condition: "Like New",
+          pricePerDay: 120,
+          deposit: 600,
+          minDays: 1,
+          location: "Koramangala, Bangalore",
+          owner: "Priya S.",
+          ownerPhone: "+91 98451 12345",
+          image: "https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=800&q=80",
+          sellAsRent: true,
+          buyoutPrice: 2200
+        };
+      }
+
+      // Populate UI
+      document.getElementById("summaryItemImg").src = activeItem.image;
+      document.getElementById("summaryItemTitle").textContent = activeItem.title;
+      document.getElementById("summaryItemCategory").textContent = activeItem.category;
+      document.getElementById("summaryItemOwner").textContent = activeItem.owner || "Verified Neighbor";
+      document.getElementById("summaryItemLocation").textContent = activeItem.location || "Bengaluru";
+      document.getElementById("alertDepositText").textContent = formatCurrency(activeItem.deposit || 0);
+
+      // Show buyout toggle if item supports Sell as Rent
+      if (activeItem.sellAsRent && activeItem.buyoutPrice) {
+        document.getElementById("orderModeToggleBox").style.display = "block";
+      } else {
+        document.getElementById("orderModeToggleBox").style.display = "none";
+      }
+    }
+
+    function setupDatePickers(startParam, endParam) {
+      const today = new Date();
+      const tomorrow = new Date();
+      tomorrow.setDate(today.getDate() + 1);
+
+      const startInput = document.getElementById("rentStartDate");
+      const endInput = document.getElementById("rentEndDate");
+      const buyoutDeliveryInput = document.getElementById("buyoutDeliveryDate");
+
+      const todayStr = today.toISOString().split("T")[0];
+      const tomorrowStr = tomorrow.toISOString().split("T")[0];
+
+      startInput.min = todayStr;
+      startInput.value = startParam && startParam >= todayStr ? startParam : todayStr;
+
+      endInput.min = startInput.value;
+      endInput.value = endParam && endParam >= startInput.value ? endParam : tomorrowStr;
+
+      if (buyoutDeliveryInput) {
+        buyoutDeliveryInput.min = todayStr;
+        buyoutDeliveryInput.value = todayStr;
+      }
+    }
+
+    function prefillUserData() {
+      const storedUser = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
+      if (storedUser) {
+        try {
+          const user = JSON.parse(storedUser);
+          if (user) {
+            if (user.fullName) document.getElementById("custFullName").value = user.fullName;
+            if (user.phone) {
+              const cleanPhone = user.phone.replace(/[^0-9]/g, "").slice(-10);
+              document.getElementById("custPhone").value = cleanPhone;
+            }
+            if (user.area) document.getElementById("custLandmark").value = user.area;
+            if (user.address) document.getElementById("custAddress").value = user.address;
+            if (user.pincode) document.getElementById("custPincode").value = user.pincode;
+            if (user.city) document.getElementById("custCity").value = user.city;
+            if (user.state) document.getElementById("custState").value = user.state;
+          }
+        } catch(e) {}
+      }
+    }
+
+    function handleOrderTypeChange() {
+      const rentRadio = document.getElementById("typeRentRadio");
+      orderMode = rentRadio && rentRadio.checked ? "rent" : "buyout";
+
+      const rentalDatesSection = document.getElementById("rentalDatesSection");
+      const buyoutDetailsNotice = document.getElementById("buyoutDetailsNotice");
+      const orderTypeBadge = document.getElementById("orderTypeBadge");
+      const summaryDepositBadge = document.getElementById("summaryDepositBadge");
+      const summaryReturnDateRow = document.getElementById("summaryReturnDateRow");
+
+      if (orderMode === "buyout") {
+        rentalDatesSection.style.display = "none";
+        buyoutDetailsNotice.style.display = "block";
+        orderTypeBadge.textContent = "Outright Buyout";
+        orderTypeBadge.style.background = "#eff6ff";
+        orderTypeBadge.style.color = "#1d4ed8";
+        orderTypeBadge.style.borderColor = "#93c5fd";
+        summaryDepositBadge.style.display = "none";
+        summaryReturnDateRow.style.display = "none";
+
+        document.getElementById("rowRentalDuration").style.display = "none";
+        document.getElementById("rowDailyRate").style.display = "none";
+        document.getElementById("rowRentSubtotal").style.display = "none";
+        document.getElementById("rowDeposit").style.display = "none";
+      } else {
+        rentalDatesSection.style.display = "block";
+        buyoutDetailsNotice.style.display = "none";
+        orderTypeBadge.textContent = "Short-Term Rental";
+        orderTypeBadge.style.background = "#fef8e7";
+        orderTypeBadge.style.color = "#8c680a";
+        orderTypeBadge.style.borderColor = "#e2c266";
+        summaryDepositBadge.style.display = "flex";
+        summaryReturnDateRow.style.display = "flex";
+
+        document.getElementById("rowRentalDuration").style.display = "flex";
+        document.getElementById("rowDailyRate").style.display = "flex";
+        document.getElementById("rowRentSubtotal").style.display = "flex";
+        document.getElementById("rowDeposit").style.display = "flex";
+      }
+
+      calculateCheckoutTotals();
+    }
+
+    function calculateCheckoutTotals() {
+      if (!activeItem) return;
+
+      const startInput = document.getElementById("rentStartDate");
+      const endInput = document.getElementById("rentEndDate");
+
+      // Validate end date is not before start date
+      if (new Date(endInput.value) < new Date(startInput.value)) {
+        endInput.value = startInput.value;
+      }
+      endInput.min = startInput.value;
+
+      const startDateVal = startInput.value;
+      const endDateVal = endInput.value;
+
+      const start = new Date(startDateVal);
+      const end = new Date(endDateVal);
+      const diffTime = end.getTime() - start.getTime();
+      let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      if (diffDays <= 0) diffDays = 1;
+
+      // Update date texts
+      const startFormatted = start.toLocaleDateString("en-IN", { month: "short", day: "numeric", year: "numeric" });
+      const endFormatted = end.toLocaleDateString("en-IN", { month: "short", day: "numeric", year: "numeric" });
+
+      document.getElementById("summaryStartDateText").textContent = startFormatted;
+      document.getElementById("summaryEndDateText").textContent = endFormatted;
+      document.getElementById("calculatedDaysText").textContent = `${diffDays} Day${diffDays > 1 ? "s" : ""}`;
+      document.getElementById("summaryDurationText").textContent = `${diffDays} Day${diffDays > 1 ? "s" : ""}`;
+
+      if (orderMode === "buyout") {
+        const buyoutAmount = activeItem.buyoutPrice || 0;
+        document.getElementById("summaryTotalDue").textContent = formatCurrency(buyoutAmount);
+        document.getElementById("submitBtnText").textContent = `Confirm Purchase & Pay ${formatCurrency(buyoutAmount)}`;
+      } else {
+        const dailyRate = activeItem.pricePerDay || 0;
+        const deposit = activeItem.deposit || 0;
+        const rentSubtotal = dailyRate * diffDays;
+        const totalDue = rentSubtotal + deposit;
+
+        document.getElementById("summaryRatePerDay").textContent = formatCurrency(dailyRate);
+        document.getElementById("summaryRentSubtotal").textContent = formatCurrency(rentSubtotal);
+        document.getElementById("summaryDeposit").textContent = formatCurrency(deposit);
+        document.getElementById("summaryBadgeDepositAmt").textContent = formatCurrency(deposit);
+        document.getElementById("summaryTotalDue").textContent = formatCurrency(totalDue);
+        document.getElementById("submitBtnText").textContent = `Confirm Order & Pay ${formatCurrency(totalDue)}`;
+      }
+    }
+
+    function switchPaymentMethod(method) {
+      document.querySelectorAll(".payment-tab-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-method") === method);
+      });
+
+      document.querySelectorAll(".payment-panel").forEach(panel => {
+        panel.classList.toggle("active", panel.id === `paymentPanel-${method}`);
+      });
+
+      const methodNames = {
+        upi: "UPI / Instant QR",
+        card: "Credit / Debit Card",
+        netbanking: "Net Banking",
+        cod: "Cash / UPI on Handover"
+      };
+
+      document.getElementById("selectedPaymentMethod").value = methodNames[method] || "UPI / Instant QR";
+    }
+
+    function selectSlot(element, targetInputId, value) {
+      const parent = element.parentElement;
+      parent.querySelectorAll(".time-slot-pill").forEach(pill => pill.classList.remove("active"));
+      element.classList.add("active");
+      document.getElementById(targetInputId).value = value;
+    }
+
+    function selectBank(element, bankName) {
+      const parent = element.parentElement;
+      parent.querySelectorAll(".bank-quick-btn").forEach(btn => btn.classList.remove("active"));
+      element.classList.add("active");
+      document.getElementById("selectedBankInput").value = bankName;
+      document.getElementById("allBanksSelect").value = "";
+    }
+
+    function verifyUPI() {
+      const upi = document.getElementById("upiIdInput").value.trim();
+      const status = document.getElementById("upiStatusText");
+      if (!upi || !upi.includes("@")) {
+        status.innerHTML = `<span style="color: #dc2626;"><i class="fa-solid fa-triangle-exclamation"></i> Please enter a valid UPI ID (e.g. mobile@upi)</span>`;
+      } else {
+        status.innerHTML = `<span style="color: #10b981;"><i class="fa-solid fa-circle-check"></i> Verified: Linked to Escrow Gateway</span>`;
+      }
+    }
+
+    function formatCurrency(amount) {
+      return "₹" + Number(amount).toLocaleString("en-IN");
+    }
+
+    // Submit handler
+    function handleCheckoutSubmit(e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById("custFullName").value.trim();
+      const phone = document.getElementById("custPhone").value.trim();
+      const address = document.getElementById("custAddress").value.trim();
+      const landmark = document.getElementById("custLandmark").value.trim();
+      const pincode = document.getElementById("custPincode").value.trim();
+      const city = document.getElementById("custCity").value.trim();
+      const state = document.getElementById("custState").value.trim();
+      const addressType = document.getElementById("addressTypeInput").value;
+      const deliveryNotes = document.getElementById("custDeliveryNotes").value.trim();
+      const paymentMethod = document.getElementById("selectedPaymentMethod").value;
+
+      const startDate = document.getElementById("rentStartDate").value;
+      const endDate = document.getElementById("rentEndDate").value;
+      const startSlot = document.getElementById("startSlotInput").value;
+      const endSlot = document.getElementById("endSlotInput").value;
+
+      if (!fullName || !phone || !address || !landmark || !pincode) {
+        alert("Please fill in all mandatory delivery address fields.");
+        return;
+      }
+
+      // Calculate days
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      let diffDays = Math.max(1, Math.ceil((end - start) / (1000 * 60 * 60 * 24)));
+
+      const orderId = "ABHI-" + Math.floor(100000 + Math.random() * 900000);
+      const timestamp = Date.now();
+
+      let orderRecord = {};
+
+      if (orderMode === "buyout") {
+        const buyoutDeliveryDate = document.getElementById("buyoutDeliveryDate").value || startDate;
+        orderRecord = {
+          id: orderId,
+          itemId: activeItem.id,
+          itemTitle: activeItem.title,
+          itemCategory: activeItem.category,
+          image: activeItem.image,
+          type: "Outright Buyout (Sell as Rent)",
+          startDate: buyoutDeliveryDate,
+          endDate: "Permanent Purchase",
+          days: 1,
+          dailyRate: 0,
+          deposit: 0,
+          totalRent: activeItem.buyoutPrice,
+          totalDue: activeItem.buyoutPrice,
+          owner: activeItem.owner,
+          ownerPhone: activeItem.ownerPhone,
+          renterName: fullName,
+          renterPhone: phone,
+          renterEmail: "verified.customer@abhivera.in",
+          deliveryAddress: `${address}, ${landmark}, ${city}, ${state} - ${pincode} (${addressType})`,
+          deliveryNotes: deliveryNotes || "None",
+          paymentMethod: paymentMethod,
+          status: "Buyout Ordered (Escrow Protected)",
+          timestamp: timestamp
+        };
+      } else {
+        const dailyRate = activeItem.pricePerDay;
+        const deposit = activeItem.deposit;
+        const rentSubtotal = dailyRate * diffDays;
+        const totalDue = rentSubtotal + deposit;
+
+        orderRecord = {
+          id: orderId,
+          itemId: activeItem.id,
+          itemTitle: activeItem.title,
+          itemCategory: activeItem.category,
+          image: activeItem.image,
+          type: "Short-Term Rental",
+          startDate: startDate,
+          endDate: endDate,
+          deliverySlot: startSlot,
+          returnSlot: endSlot,
+          days: diffDays,
+          dailyRate: dailyRate,
+          deposit: deposit,
+          totalRent: rentSubtotal,
+          totalDue: totalDue,
+          owner: activeItem.owner,
+          ownerPhone: activeItem.ownerPhone,
+          renterName: fullName,
+          renterPhone: phone,
+          renterEmail: "verified.customer@abhivera.in",
+          deliveryAddress: `${address}, ${landmark}, ${city}, ${state} - ${pincode} (${addressType})`,
+          deliveryNotes: deliveryNotes || "None",
+          paymentMethod: paymentMethod,
+          status: "Verified & Scheduled (Escrow Protected)",
+          timestamp: timestamp
+        };
+      }
+
+      // Save to localStorage so main tab instantly reflects the booking in Activity Drawer
+      let existingBookings = [];
+      const savedBookings = localStorage.getItem(STORAGE_KEYS.USER_BOOKINGS);
+      if (savedBookings) {
+        try {
+          existingBookings = JSON.parse(savedBookings);
+        } catch(e) {
+          existingBookings = [];
+        }
+      }
+      existingBookings.unshift(orderRecord);
+      localStorage.setItem(STORAGE_KEYS.USER_BOOKINGS, JSON.stringify(existingBookings));
+
+      // Render Confirmation View
+      renderReceipt(orderRecord);
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderReceipt(order) {
+      document.getElementById("checkoutForm").style.display = "none";
+      const successView = document.getElementById("orderSuccessView");
+      successView.style.display = "block";
+
+      const receiptDetails = document.getElementById("successReceiptDetails");
+
+      const isBuyout = order.type.includes("Buyout");
+
+      receiptDetails.innerHTML = `
+        <div style="text-align: center; margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 1px solid #e8e2d5;">
+          <span style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #8c680a; font-weight: 800;">Official ABHIVERA Escrow Booking Receipt</span>
+          <div style="font-size: 1.4rem; font-weight: 900; color: #0b1c36; margin-top: 0.2rem;">Order #${order.id}</div>
+          <div style="font-size: 0.82rem; color: #10b981; font-weight: 700; margin-top: 0.2rem;">
+            <i class="fa-solid fa-shield-check"></i> Escrow Funds Secured • Status: ${order.status}
+          </div>
+        </div>
+
+        <div class="receipt-row">
+          <span>Appliance / Item:</span>
+          <strong>${order.itemTitle}</strong>
+        </div>
+
+        ${!isBuyout ? `
+          <div class="receipt-row">
+            <span>From Date of Renting:</span>
+            <strong>${order.startDate} (${order.deliverySlot || 'Morning'})</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Last Date of Renting & Returning:</span>
+            <strong style="color: #c59b27;">${order.endDate} (${order.returnSlot || 'Morning'})</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Total Rental Duration:</span>
+            <strong>${order.days} Day${order.days > 1 ? 's' : ''}</strong>
+          </div>
+        ` : `
+          <div class="receipt-row">
+            <span>Order Type:</span>
+            <strong>Permanent Outright Buyout (No Return)</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Handover / Delivery Date:</span>
+            <strong>${order.startDate}</strong>
+          </div>
+        `}
+
+        <div class="receipt-row">
+          <span>Delivery Address:</span>
+          <strong style="text-align: right; max-width: 320px;">${order.deliveryAddress}</strong>
+        </div>
+
+        <div class="receipt-row">
+          <span>Recipient Name & Contact:</span>
+          <strong>${order.renterName} (${order.renterPhone})</strong>
+        </div>
+
+        <div class="receipt-row">
+          <span>Verified Lender:</span>
+          <strong>${order.owner} (${order.ownerPhone})</strong>
+        </div>
+
+        <div class="receipt-row">
+          <span>Payment Method Selected:</span>
+          <strong>${order.paymentMethod}</strong>
+        </div>
+
+        ${!isBuyout ? `
+          <div class="receipt-row">
+            <span>Rent Subtotal:</span>
+            <strong>${formatCurrency(order.totalRent)}</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Refundable Security Deposit:</span>
+            <strong style="color: #065f46;">${formatCurrency(order.deposit)} (100% Refundable)</strong>
+          </div>
+        ` : ''}
+
+        <div class="receipt-row" style="font-size: 1.1rem; padding-top: 0.65rem; margin-top: 0.45rem; border-top: 2px solid #0b1c36;">
+          <span>Total Paid / Payable:</span>
+          <strong style="color: #c59b27; font-size: 1.25rem;">${formatCurrency(order.totalDue)}</strong>
+        </div>
+
+        ${!isBuyout ? `
+          <div style="margin-top: 1rem; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 0.75rem; border-radius: 6px; font-size: 0.8rem; color: #065f46;">
+            <i class="fa-solid fa-circle-check"></i> <strong>Return Guarantee:</strong> On ${order.endDate}, our courier will pick up the appliance from your delivery address. Your deposit of ${formatCurrency(order.deposit)} will be automatically credited back within 2 hours.
+          </div>
+        ` : ''}
+      `;
+    }
+  </script>
+</body>
+</html>

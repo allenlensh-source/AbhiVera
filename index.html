@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABHIVERA | Rent Everyday Home Appliances & Essentials Short-Term</title>
+  <meta name="description" content="Vibrant peer-to-peer short-term rental marketplace for home appliances, electronics, utensils, and luxury linens. Verified neighbors & deposit protection.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Brand Announcement Bar -->
+  <div class="announcement-bar">
+    <i class="fa-solid fa-bullhorn"></i>
+    <span><strong>ABHIVERA</strong> — India's Premier Peer-to-Peer Rental & "Sell as Rent" Network for Everyday Home Essentials!</span>
+  </div>
+
+  <!-- =====================================================================
+       NAVBAR
+       ===================================================================== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo" id="logoLink">
+        <img src="assets/logo.jpg" alt="ABHIVERA Official Logo" class="brand-logo-img">
+        <div class="brand-text-block">
+          <span class="brand-title">ABHI<span class="brand-highlight">VERA</span></span>
+          <span class="nav-tagline">Rent • Lend • Sell as Rent</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Guest Quick Nav Links (Logged Out Only) -->
+        <nav class="logged-out-only" style="display: flex; gap: 1.25rem; font-weight: 700; font-size: 0.88rem; color: #52525b; margin-right: 0.5rem;">
+          <a href="#why-abhivera" style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-bullhorn" style="color: #ff385c;"></i> About ABHIVERA</a>
+          <a href="#advantages" style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-star" style="color: #f59e0b;"></i> Key Advantages</a>
+          <a href="#how-it-works" style="display: flex; align-items: center; gap: 0.35rem;"><i class="fa-solid fa-route" style="color: #10b981;"></i> How It Works</a>
+        </nav>
+
+        <!-- Log In / Sign Up Button (Shown when logged out) -->
+        <button class="btn btn-primary logged-out-only" id="loginBtn">
+          <i class="fa-solid fa-lock"></i>
+          <span>Member Login / Join</span>
+        </button>
+
+        <!-- Wishlist Button (Logged In Only) -->
+        <button class="wishlist-nav-btn logged-in-only" id="navWishlistBtn" title="Saved Wishlist Items">
+          <i class="fa-solid fa-heart"></i>
+          <span>Wishlist</span>
+          <span class="badge-counter" id="wishlistNavCounter">0</span>
+        </button>
+
+        <!-- User Profile Menu (Shown when logged in) -->
+        <div class="user-menu-wrapper logged-in-only" id="userMenuWrapper">
+          <div class="user-profile-pill" id="userProfilePill">
+            <div class="user-avatar" id="navUserAvatar">U</div>
+            <span class="user-name-label" id="navUserName">User</span>
+            <i class="fa-solid fa-circle-check user-verified-badge" title="Verified Member"></i>
+            <i class="fa-solid fa-angle-down" style="font-size: 0.72rem; color: var(--text-muted); margin-left: 2px;"></i>
+          </div>
+
+          <div class="user-dropdown-menu" id="userDropdownMenu">
+            <div class="user-dropdown-header">
+              <div class="dropdown-user-name" id="menuFullName">Full Name</div>
+              <div class="dropdown-user-meta" id="menuEmail">user@email.com</div>
+              <div class="dropdown-kyc-tag">
+                <i class="fa-solid fa-shield-check"></i> <span id="menuGovIdTag">ID Verified</span>
+              </div>
+            </div>
+
+            <button class="dropdown-item" id="menuOpenProfileBtn">
+              <i class="fa-solid fa-id-card"></i>
+              <span>My Profile & KYC Details</span>
+            </button>
+            <button class="dropdown-item" id="menuMyListingsBtn">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <span>My Listed Items (Rent & Sell)</span>
+            </button>
+            <button class="dropdown-item" id="menuMyBookingsBtn">
+              <i class="fa-solid fa-calendar-check"></i>
+              <span>My Rental & Buyout Orders</span>
+            </button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" id="menuLogoutBtn" style="color: #ef4444;">
+              <i class="fa-solid fa-right-from-bracket" style="color: #ef4444;"></i>
+              <span>Log Out</span>
+            </button>
+          </div>
+        </div>
+
+        <button class="btn btn-outline logged-in-only" id="openActivityDrawerBtn">
+          <i class="fa-regular fa-clock-rotate-left"></i>
+          <span>Activity</span>
+          <span class="badge-counter" id="activityCounter">0</span>
+        </button>
+
+        <button class="btn btn-primary logged-in-only" id="openUploadModalBtn">
+          <i class="fa-solid fa-plus-circle"></i>
+          <span>List to Rent / Sell</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       1. GUEST / ADVERTISING & ADVANTAGES SHOWCASE (SHOWN WHEN LOGGED OUT)
+       ===================================================================== -->
+  <div class="logged-out-only" id="guestShowcaseSection">
+    <!-- Hero with Value Prop & Mandatory Login Card -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="guest-hero-grid">
+          <div>
+            <div class="hero-tag">
+              <i class="fa-solid fa-bolt" style="color: #ea580c;"></i> Smarter Short-Term Living
+            </div>
+            <h1 class="hero-title">
+              Why Buy When You Can Borrow? <span class="hero-highlight">Rent Home Essentials, or Sell as Rent.</span>
+            </h1>
+            <p class="hero-subtitle">
+              Need a 750W mixer for a family dinner, a projector for movie night, or extra guest mattresses? ABHIVERA lets verified neighbors rent and lend everyday appliances for short term with 100% refundable deposit protection. You can even list items to <strong>Sell as Rent</strong> (Rent-to-Own)!
+            </p>
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.88rem; font-weight: 700; color: #4b5563; padding-top: 1rem; border-top: 1px solid #fed7aa;">
+              <div style="display: flex; align-items: center; gap: 0.45rem;"><i class="fa-solid fa-shield-halved" style="color: #10b981; font-size: 1.1rem;"></i> 100% Deposit Protection</div>
+              <div style="display: flex; align-items: center; gap: 0.45rem;"><i class="fa-solid fa-id-card" style="color: #3b82f6; font-size: 1.1rem;"></i> KYC-Verified Community</div>
+              <div style="display: flex; align-items: center; gap: 0.45rem;"><i class="fa-solid fa-tags" style="color: #f59e0b; font-size: 1.1rem;"></i> Sell as Rent (Rent-to-Own)</div>
+            </div>
+          </div>
+
+          <!-- Mandatory Sign In & Verification Card -->
+          <div class="guest-login-card">
+            <span class="guest-card-badge"><i class="fa-solid fa-lock"></i> MANDATORY SIGN IN</span>
+            <h2 class="guest-card-title">Sign In to Access Marketplace</h2>
+            <p class="guest-card-desc">
+              To browse item slots, rent appliances, or list items to earn & sell as rent, sign in to your verified account.
+            </p>
+
+            <form id="heroInlineLoginForm" style="text-align: left; margin-bottom: 1rem;">
+              <div style="margin-bottom: 0.75rem;">
+                <label style="font-size: 0.78rem; font-weight: 800; color: #3f3f46; display: block; margin-bottom: 0.2rem;">Email or Mobile Number</label>
+                <input type="text" id="heroLoginEmail" class="form-input" placeholder="e.g. aditi.verma@example.com" style="padding: 0.65rem 0.85rem; font-size: 0.88rem;" required>
+              </div>
+              <div style="margin-bottom: 1rem;">
+                <label style="font-size: 0.78rem; font-weight: 800; color: #3f3f46; display: block; margin-bottom: 0.2rem;">Password</label>
+                <input type="password" id="heroLoginPassword" class="form-input" placeholder="Enter password" style="padding: 0.65rem 0.85rem; font-size: 0.88rem;" required>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.8rem; font-size: 0.95rem;">
+                <i class="fa-solid fa-right-to-bracket"></i> Sign In to Enter
+              </button>
+            </form>
+
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+              <hr style="flex: 1; border: none; border-top: 1px solid #e8e2d5;">
+              <span style="font-size: 0.75rem; font-weight: 800; color: #8c680a;">OR QUICK ACCESS</span>
+              <hr style="flex: 1; border: none; border-top: 1px solid #e8e2d5;">
+            </div>
+
+            <button type="button" class="btn btn-outline btn-guest-demo" style="width: 100%; padding: 0.75rem; font-size: 0.88rem; font-weight: 800; border: 1.5px solid #c59b27; color: #0b1c36; background: #fef8e7; margin-bottom: 0.85rem;">
+              <i class="fa-solid fa-bolt" style="color: #c59b27;"></i> 1-Click Instant Demo Login (Aditi Verma)
+            </button>
+
+            <div style="font-size: 0.84rem; color: #52525b;">
+              New to ABHIVERA? <a href="#" class="btn-guest-register-link" style="color: var(--primary-color); font-weight: 800; text-decoration: underline;">Create Free Verified Account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comprehensive Advantages Section -->
+    <section class="advertise-section" id="advantages" style="background: #ffffff;">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-pill-tag">Smart Advantages</span>
+          <h2>Why Thousands Choose ABHIVERA Over Buying</h2>
+          <p style="color: var(--text-muted); font-size: 1.05rem; margin-top: 0.5rem;">
+            From short-term party cooking to testing gadgets or earning passive income, here is why renting and "selling as rent" makes total sense.
+          </p>
+        </div>
+
+        <div class="advantages-card-grid">
+          <div class="advantage-card">
+            <span class="advantage-num">01</span>
+            <div class="advantage-icon-box" style="background: #071224; color: #e6ca65; border: 1px solid #c59b27;"><i class="fa-solid fa-sack-dollar"></i></div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">Save Up To 85% Cash</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.55;">
+              Why spend ₹25,000–₹50,000 on home appliances you only use once or twice a year? Borrow for as low as ₹90–₹350/day and keep your hard-earned money in your bank.
+            </p>
+          </div>
+
+          <div class="advantage-card">
+            <span class="advantage-num">02</span>
+            <div class="advantage-icon-box" style="background: #fef8e7; color: #c59b27; border: 1px solid #e2c266;"><i class="fa-solid fa-tags"></i></div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">"Sell as Rent" (Rent-to-Own)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.55;">
+              Owners can list items to sell via rent! Renters can "try before buying" or buyout the item outright at a pre-set price if they fall in love with it during their rental.
+            </p>
+          </div>
+
+          <div class="advantage-card">
+            <span class="advantage-num">03</span>
+            <div class="advantage-icon-box" style="background: #0b1c36; color: #d4af37; border: 1px solid #c59b27;"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">100% Deposit Protection</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.55;">
+              All security deposits are safely held in escrow. As soon as the item is returned in working condition, your deposit is refunded automatically without deductions.
+            </p>
+          </div>
+
+          <div class="advantage-card">
+            <span class="advantage-num">04</span>
+            <div class="advantage-icon-box" style="background: #0e2445; color: #e6ca65; border: 1px solid #c59b27;"><i class="fa-solid fa-id-card-clip"></i></div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">Mandatory KYC Verification</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.55;">
+              Zero anonymous users. Every lender and borrower must sign in and verify their government identity (Aadhaar / Voter ID / Passport) to ensure neighborhood trust.
+            </p>
+          </div>
+
+          <div class="advantage-card">
+            <span class="advantage-num">05</span>
+            <div class="advantage-icon-box" style="background: #fef8e7; color: #b8860b; border: 1px solid #e2c266;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">Sanitized & Condition Graded</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.55;">
+              Every appliance, utensil set, and guest linen bundle is inspected, deep-cleaned, and graded (*Brand New, Like New, Good*) with accessory checklists.
+            </p>
+          </div>
+
+          <div class="advantage-card">
+            <span class="advantage-num">06</span>
+            <div class="advantage-icon-box" style="background: #071224; color: #d4af37; border: 1px solid #c59b27;"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.5rem;">Passive Income for Lenders</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.55;">
+              Turn unused blenders, projectors, spare mattresses, and party pots into an asset earning ₹1,500 to ₹8,000 every single month from verified neighbors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose ABHIVERA Features Showcase -->
+    <section class="advertise-section" id="why-abhivera" style="background: #faf8f5;">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-pill-tag">Everything for Home</span>
+          <h2>Explore Categories You Can Rent or Sell As Rent</h2>
+          <p style="color: var(--text-muted); font-size: 1rem; margin-top: 0.5rem;">
+            From electronics to dining cookware and guest mattresses, access top-brand home goods.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon-box" style="background: #071224; color: #e6ca65; border: 1px solid #c59b27;"><i class="fa-solid fa-tv"></i></div>
+            <h3>Electronics On-Demand</h3>
+            <p>Rent native 1080p smart projectors, Bluetooth sound systems, and handheld garment steamers for weddings, parties, and family movie nights.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon-box" style="background: #fef8e7; color: #c59b27; border: 1px solid #e2c266;"><i class="fa-solid fa-kitchen-set"></i></div>
+            <h3>Party Cookware & Pots</h3>
+            <p>Host 10 to 30 guests with jumbo 8L Biryani handis, induction stoves, non-stick party cookware, and complete 24-piece dinner sets.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon-box" style="background: #0b1c36; color: #d4af37; border: 1px solid #c59b27;"><i class="fa-solid fa-rug"></i></div>
+            <h3>Guest Bedding & Linens</h3>
+            <p>Hosting relatives this weekend? Rent freshly dry-cleaned microfiber comforters and high-density foldable guest mattresses with covers.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon-box" style="background: #0e2445; color: #e6ca65; border: 1px solid #c59b27;"><i class="fa-solid fa-tags"></i></div>
+            <h3>Sell as Rent (Rent-to-Own)</h3>
+            <p>Moving out or upgrading? List your appliances for short-term rental with an optional buyout price so buyers can test before purchasing!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section" id="how-it-works">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-pill-tag">Simple & Safe</span>
+          <h2>How ABHIVERA Works in 3 Steps</h2>
+        </div>
+
+        <div class="how-steps-grid">
+          <div class="how-card">
+            <div class="how-step-badge">1</div>
+            <h3>Sign Up & Verify KYC</h3>
+            <p>Register with your Government ID proof (Aadhaar, Voter ID, Passport). Identity verification guarantees community trust and safety.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-step-badge">2</div>
+            <h3>Browse or List in Seconds</h3>
+            <p>Renters select rental dates with dynamic price calculation. Lenders upload photos with transparent condition notes and refundable deposits.</p>
+          </div>
+          <div class="how-card">
+            <div class="how-step-badge">3</div>
+            <h3>Handover & Deposit Return</h3>
+            <p>Meet your verified neighbor for pickup or delivery. After safe return, security deposits are refunded immediately without hassle.</p>
+          </div>
+        </div>
+
+        <!-- Locked Marketplace Teaser Banner -->
+        <div class="locked-teaser-banner" id="trust-safety">
+          <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(212, 175, 55, 0.2); border: 1.5px solid #c59b27; color: #e6ca65; font-size: 1.8rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+          <h2>Ready to Unlock 140+ Available Rentals & Sell-as-Rent Items?</h2>
+          <p>
+            Options to rent and lend items are exclusively visible to signed-in members. Join thousands of happy neighbors sharing home essentials today.
+          </p>
+          <button class="btn btn-primary btn-guest-join" style="padding: 0.95rem 2.2rem; font-size: 1.05rem;">
+            <i class="fa-solid fa-unlock-keyhole"></i> Log In to Unlock Marketplace
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- =====================================================================
+       2. MEMBER MARKETPLACE SECTION (SHOWN ONLY WHEN LOGGED IN)
+       ===================================================================== -->
+  <div class="logged-in-only" id="memberMarketplaceSection">
+    <!-- Member Welcome Strip -->
+    <div class="member-welcome-banner">
+      <div class="container member-welcome-content">
+        <div class="member-welcome-text">
+          <h2>👋 Welcome back, <span id="memberWelcomeName" style="color: var(--primary-color);">Member</span>!</h2>
+          <p>Your verified account is active. Browse short-term rentals near you or list your idle appliances to earn.</p>
+        </div>
+        <button class="btn btn-accent" id="memberHeroListBtn" style="padding: 0.75rem 1.45rem;">
+          <i class="fa-solid fa-hand-holding-dollar"></i> List an Item to Earn
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Capsule Section -->
+    <section class="hero-section" style="padding: 2.5rem 0 3.5rem;">
+      <div class="container">
+        <div class="search-capsule-wrapper">
+          <div class="search-capsule">
+            <!-- Segment 1: What Specific Item -->
+            <div class="capsule-segment capsule-item-segment">
+              <span class="capsule-label"><i class="fa-solid fa-magnifying-glass"></i> What Item?</span>
+              <input type="text" id="capsuleItemInput" class="capsule-input" placeholder="Specific item (e.g. Mixer, Projector, Vacuum, Pot...)">
+            </div>
+
+            <!-- Segment 2: Where -->
+            <div class="capsule-segment">
+              <span class="capsule-label"><i class="fa-solid fa-location-dot"></i> Where</span>
+              <input type="text" id="capsuleLocationInput" class="capsule-input" placeholder="Search area (e.g. Koramangala)">
+            </div>
+
+            <!-- Segment 3: Category -->
+            <div class="capsule-segment">
+              <span class="capsule-label"><i class="fa-solid fa-layer-group"></i> Category</span>
+              <select id="capsuleCategorySelect" class="capsule-select">
+                <option value="all">All Categories</option>
+                <option value="Kitchen Appliances">Kitchen Appliances</option>
+                <option value="Utensils & Cookware">Utensils & Cookware</option>
+                <option value="Home Textiles & Linens">Home Textiles & Linens</option>
+                <option value="Electronics & Gadgets">Electronics & Gadgets</option>
+                <option value="Cleaning & Utility">Cleaning & Utility</option>
+                <option value="Climate & Fans">Climate & Fans</option>
+              </select>
+            </div>
+
+            <!-- Segment 4: Max Daily Budget -->
+            <div class="capsule-segment">
+              <span class="capsule-label"><i class="fa-solid fa-indian-rupee-sign"></i> Max Rent</span>
+              <select id="capsulePriceSelect" class="capsule-select">
+                <option value="all">Any Price</option>
+                <option value="100">Under ₹100/day</option>
+                <option value="200">Under ₹200/day</option>
+                <option value="400">Under ₹400/day</option>
+              </select>
+            </div>
+
+            <!-- Big Search Button -->
+            <button class="btn-capsule-search" id="capsuleSearchBtn" title="Search for items">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Search</span>
+            </button>
+          </div>
+
+          <!-- Quick Trending Pills -->
+          <div class="hero-quick-tags">
+            <span style="font-weight: 800; color: #8c680a;"><i class="fa-solid fa-sparkles"></i> Popular:</span>
+            <button class="quick-search-pill" data-query="Mixer">Philips Mixer Grinder</button>
+            <button class="quick-search-pill" data-query="Biryani">Party Jumbo Pot</button>
+            <button class="quick-search-pill" data-query="Projector">Full HD Projector</button>
+            <button class="quick-search-pill" data-query="Mattress">Guest Mattress</button>
+            <button class="quick-search-pill" data-query="Vacuum">Deep Vacuum Cleaner</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real Object Category Bar -->
+    <section class="category-section-wrap">
+      <div class="container">
+        <div class="category-scroll" id="categoryChipsContainer">
+          <button class="category-chip active" data-category="all">
+            <div class="chip-image-box">
+              <img src="assets/categories/all.jpg" alt="All Home Appliances" class="chip-real-img">
+            </div>
+            <span class="chip-text">All Items</span>
+          </button>
+
+          <button class="category-chip" data-category="Kitchen Appliances">
+            <div class="chip-image-box">
+              <img src="assets/categories/kitchen.jpg" alt="Kitchen Appliances" class="chip-real-img">
+            </div>
+            <span class="chip-text">Kitchen</span>
+          </button>
+
+          <button class="category-chip" data-category="Utensils & Cookware">
+            <div class="chip-image-box">
+              <img src="assets/categories/utensils.jpg" alt="Utensils & Cookware" class="chip-real-img">
+            </div>
+            <span class="chip-text">Utensils & Pots</span>
+          </button>
+
+          <button class="category-chip" data-category="Home Textiles & Linens">
+            <div class="chip-image-box">
+              <img src="assets/categories/textiles.jpg" alt="Home Textiles & Linens" class="chip-real-img">
+            </div>
+            <span class="chip-text">Textiles & Linens</span>
+          </button>
+
+          <button class="category-chip" data-category="Electronics & Gadgets">
+            <div class="chip-image-box">
+              <img src="assets/categories/electronics.jpg" alt="Electronics & Gadgets" class="chip-real-img">
+            </div>
+            <span class="chip-text">Electronics</span>
+          </button>
+
+          <button class="category-chip" data-category="Cleaning & Utility">
+            <div class="chip-image-box">
+              <img src="assets/categories/cleaning.jpg" alt="Cleaning & Tools" class="chip-real-img">
+            </div>
+            <span class="chip-text">Cleaning & Tools</span>
+          </button>
+
+          <button class="category-chip" data-category="Climate & Fans">
+            <div class="chip-image-box">
+              <img src="assets/categories/climate.jpg" alt="Climate & Cooling" class="chip-real-img">
+            </div>
+            <span class="chip-text">Climate & Cooling</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marketplace Catalog Grid -->
+    <main class="marketplace-section" id="marketplace">
+      <div class="container">
+        <div class="marketplace-filter-bar">
+          <div class="filter-left-controls">
+            <!-- Specific Item Live Search Input Box -->
+            <div class="marketplace-live-search-box">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="marketplaceItemSearchInput" class="live-search-input" placeholder="Search specific item (e.g. Mixer, Vacuum, Projector, Pot)...">
+              <button type="button" id="clearMarketplaceSearchBtn" class="clear-search-btn" title="Clear search" style="display: none;">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <!-- Wishlist Only Filter Pill -->
+            <button class="wishlist-toggle-filter" id="wishlistFilterToggle">
+              <i class="fa-solid fa-heart" style="color: #c59b27;"></i>
+              <span>Show Wishlist Only (<span id="wishlistCountFilter">0</span>)</span>
+            </button>
+
+            <!-- Sort Filter -->
+            <select id="sortFilter" class="filter-pill-select">
+              <option value="featured">✨ Featured & Newest</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="deposit-asc">Lowest Deposit</option>
+            </select>
+
+            <!-- Condition Quick Filter -->
+            <select id="conditionFilter" class="filter-pill-select">
+              <option value="all">All Conditions</option>
+              <option value="Brand New">Brand New Only</option>
+              <option value="Like New">Like New Only</option>
+              <option value="Good">Good Condition</option>
+              <option value="Fair">Fair / Usable</option>
+            </select>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 0.85rem;">
+            <span style="font-size: 0.92rem; font-weight: 800; color: #71717a;">
+              Showing <span id="itemCountDisplay" style="color: var(--primary-color);">0</span> items
+            </span>
+            <button class="btn btn-outline" id="resetFiltersBtn" style="padding: 0.45rem 0.95rem; font-size: 0.82rem;">
+              <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid with Wishlist & Large Visuals -->
+        <div class="items-grid" id="itemsGrid">
+          <!-- Dynamically rendered via app.js -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- =====================================================================
+       LIST / UPLOAD ITEM MODAL (LENDER FORM)
+       ===================================================================== -->
+  <div class="modal-overlay" id="uploadModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-solid fa-cloud-arrow-up" style="color: var(--primary-color);"></i>
+          List Your Item on ABHIVERA
+        </h3>
+        <button class="modal-close-btn" id="closeUploadModalBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="uploadItemForm">
+        <div class="modal-body">
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+            Provide transparent details and exact condition notes so renters know what condition it is in.
+          </p>
+
+          <div class="form-grid">
+            <!-- Item Title -->
+            <div class="form-group full-width">
+              <label class="form-label" for="itemTitle">
+                <span>Item Name & Model <span class="req">*</span></span>
+                <span class="hint">e.g. Philips 750W Mixer Grinder 3 Jars</span>
+              </label>
+              <input type="text" id="itemTitle" class="form-input" placeholder="e.g. Prestige 3-Liter Pressure Cooker" required>
+            </div>
+
+            <!-- Category -->
+            <div class="form-group">
+              <label class="form-label" for="itemCategory">
+                <span>Category <span class="req">*</span></span>
+              </label>
+              <select id="itemCategory" class="form-select" required>
+                <option value="Kitchen Appliances">Kitchen Appliances</option>
+                <option value="Utensils & Cookware">Utensils & Cookware</option>
+                <option value="Home Textiles & Linens">Home Textiles & Linens</option>
+                <option value="Electronics & Gadgets">Electronics & Gadgets</option>
+                <option value="Cleaning & Utility">Cleaning & Utility</option>
+                <option value="Climate & Fans">Climate & Fans</option>
+              </select>
+            </div>
+
+            <!-- Condition Rating -->
+            <div class="form-group">
+              <label class="form-label" for="itemCondition">
+                <span>Item Condition <span class="req">*</span></span>
+              </label>
+              <select id="itemCondition" class="form-select" required>
+                <option value="Brand New">Brand New (Unopened / Never Used)</option>
+                <option value="Like New" selected>Like New (Spotless, works perfectly)</option>
+                <option value="Good">Good (Minor cosmetic wear, 100% functional)</option>
+                <option value="Fair">Fair (Noticeable wear, fully operational)</option>
+              </select>
+            </div>
+
+            <!-- Daily Rental Price -->
+            <div class="form-group">
+              <label class="form-label" for="itemPrice">
+                <span>Daily Rental Rate (₹) <span class="req">*</span></span>
+                <span class="hint">per day</span>
+              </label>
+              <input type="number" id="itemPrice" class="form-input" placeholder="e.g. 150" min="10" required>
+            </div>
+
+            <!-- Security Deposit -->
+            <div class="form-group">
+              <label class="form-label" for="itemDeposit">
+                <span>Security Deposit (₹) <span class="req">*</span></span>
+                <span class="hint">Refunded on return</span>
+              </label>
+              <input type="number" id="itemDeposit" class="form-input" placeholder="e.g. 500" min="0" required>
+            </div>
+
+            <!-- Minimum Rental Duration -->
+            <div class="form-group">
+              <label class="form-label" for="itemMinDays">
+                <span>Min Rental Period</span>
+              </label>
+              <select id="itemMinDays" class="form-select">
+                <option value="1">1 Day</option>
+                <option value="2" selected>2 Days</option>
+                <option value="3">3 Days</option>
+                <option value="7">1 Week</option>
+              </select>
+            </div>
+
+            <!-- Location / City Area -->
+            <div class="form-group">
+              <label class="form-label" for="itemLocation">
+                <span>Pickup Location / Area <span class="req">*</span></span>
+              </label>
+              <input type="text" id="itemLocation" class="form-input" placeholder="e.g. Indiranagar, Bangalore" required>
+            </div>
+
+            <!-- Sell as Rent (Rent-to-Own Option) -->
+            <div class="form-group full-width" style="background: #fef8e7; border: 1.5px dashed #c59b27; padding: 1.15rem; border-radius: var(--radius-md);">
+              <label style="display: flex; align-items: flex-start; gap: 0.65rem; cursor: pointer; margin-bottom: 0;">
+                <input type="checkbox" id="itemSellAsRentCheckbox" style="margin-top: 0.25rem; width: 18px; height: 18px; accent-color: var(--navy-main);">
+                <div>
+                  <strong style="color: #8c680a; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">
+                    <i class="fa-solid fa-tags" style="color: #c59b27;"></i> Offer "Sell as Rent" (Rent-to-Own / Outright Purchase)
+                  </strong>
+                  <span style="font-size: 0.82rem; color: #5a6a80; display: block; margin-top: 0.2rem;">
+                    Allow renters who love your item to buy it permanently from you at a pre-set buyout price!
+                  </span>
+                </div>
+              </label>
+
+              <div id="sellAsRentPriceGroup" style="display: none; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid #e8e2d5;">
+                <label class="form-label" for="itemBuyoutPrice">
+                  <span>Outright Buyout Price (₹) <span class="req">*</span></span>
+                  <span class="hint">Fixed price if renter purchases permanently</span>
+                </label>
+                <input type="number" id="itemBuyoutPrice" class="form-input" placeholder="e.g. 2400" min="50">
+              </div>
+            </div>
+
+            <!-- Description & Condition Notes -->
+            <div class="form-group full-width">
+              <label class="form-label" for="itemDescription">
+                <span>Condition Notes & Details <span class="req">*</span></span>
+                <span class="hint">Mention accessories included, hygiene status, power cord, etc.</span>
+              </label>
+              <textarea id="itemDescription" class="form-textarea" placeholder="Detail any scratches, instructions for use, what accessories are included, and cleaning requirements..." required></textarea>
+            </div>
+
+            <!-- Image Upload / Presets -->
+            <div class="form-group full-width">
+              <label class="form-label">
+                <span>Item Photo <span class="req">*</span></span>
+                <span class="hint">Upload a real photo or select a quick preset</span>
+              </label>
+
+              <div class="image-upload-zone" id="imageDropZone">
+                <input type="file" id="itemImageFileInput" accept="image/*" style="display: none;">
+                <div id="dropZonePrompt">
+                  <i class="fa-solid fa-camera" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem; display: block;"></i>
+                  <span style="font-size: 0.95rem; font-weight: 700;">Click or drag to upload photo</span>
+                  <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Supports JPG, PNG, WebP</div>
+                </div>
+                
+                <div class="image-preview-container" id="imagePreviewContainer">
+                  <img id="imagePreview" src="" alt="Uploaded item preview">
+                  <button type="button" class="remove-img-btn" id="removeImgBtn" title="Remove photo">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Preset Sample Images Shortcut -->
+              <div class="preset-images-group">
+                <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">Quick preset photos:</span>
+                <button type="button" class="preset-chip" data-img="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?auto=format&fit=crop&w=700&q=80">Projector</button>
+                <button type="button" class="preset-chip" data-img="https://images.unsplash.com/photo-1585659722983-3a675dabf23d?auto=format&fit=crop&w=700&q=80">Microwave</button>
+                <button type="button" class="preset-chip" data-img="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=700&q=80">Bed Linen Set</button>
+                <button type="button" class="preset-chip" data-img="https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=700&q=80">Cookware Pot</button>
+                <button type="button" class="preset-chip" data-img="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=700&q=80">Vacuum Cleaner</button>
+              </div>
+            </div>
+
+            <!-- Lender Profile Info -->
+            <div class="form-group">
+              <label class="form-label" for="ownerName">
+                <span>Your Name (Lender) <span class="req">*</span></span>
+              </label>
+              <input type="text" id="ownerName" class="form-input" placeholder="e.g. Rahul Sharma" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="ownerPhone">
+                <span>Phone / WhatsApp <span class="req">*</span></span>
+                <span class="hint">For renter coordination</span>
+              </label>
+              <input type="tel" id="ownerPhone" class="form-input" placeholder="e.g. +91 98765 43210" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="cancelUploadBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submitItemBtn">
+            <i class="fa-solid fa-check"></i> Publish Listing
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       ITEM DETAILS & RENT CALCULATOR MODAL
+       ===================================================================== -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-container" style="max-width: 820px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="detailTitle">Item Details</h3>
+        <button class="modal-close-btn" id="closeDetailModalBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="detail-modal-layout">
+          <div>
+            <div class="detail-img-box">
+              <img id="detailImg" src="" alt="Rental item">
+            </div>
+
+            <div id="detailConditionBanner" class="detail-condition-banner">
+              <i class="fa-solid fa-shield-heart" style="font-size: 1.4rem;"></i>
+              <div>
+                <strong id="detailConditionText">Condition: Like New</strong>
+                <p id="detailConditionSub" style="font-size: 0.82rem; margin: 0; color: inherit; opacity: 0.9;">Tested and checked before handover.</p>
+              </div>
+            </div>
+
+            <div style="background: #fafaf9; border: 1px solid var(--border-color); padding: 0.95rem; border-radius: var(--radius-md); font-size: 0.85rem; color: var(--text-muted);">
+              <div><strong style="color: var(--text-main);"><i class="fa-solid fa-user-check" style="color: var(--secondary-color);"></i> Verified Lender:</strong> <span id="detailOwner">Rahul</span></div>
+              <div style="margin-top: 0.35rem;"><strong style="color: var(--text-main);"><i class="fa-solid fa-location-dot" style="color: var(--primary-color);"></i> Pickup Location:</strong> <span id="detailLocation">Indiranagar</span></div>
+            </div>
+          </div>
+
+          <div class="detail-info-box">
+            <span class="item-category-tag-floating" id="detailCategory" style="align-self: flex-start; margin-bottom: 0.5rem; background: #fef8e7; color: #8c680a; border: 1px solid #e2c266; font-weight: 800;">Category</span>
+            
+            <h2 id="detailName" style="font-size: 1.5rem; font-weight: 900; line-height: 1.25; margin-bottom: 0.5rem;">Item Name</h2>
+            
+            <div style="margin-bottom: 0.85rem;">
+              <span id="detailPriceDaily" style="font-size: 1.65rem; font-weight: 900; color: var(--primary-color);">₹150</span>
+              <span style="color: var(--text-muted); font-size: 0.95rem; font-weight: 600;"> / day</span>
+              <span style="margin-left: 0.85rem; font-size: 0.88rem; color: var(--text-muted);">(Deposit: <strong id="detailDepositAmount" style="color: var(--text-main);">₹500</strong> refundable)</span>
+            </div>
+
+            <div style="margin-bottom: 1.15rem;">
+              <h5 style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); margin-bottom: 0.35rem;">Condition Notes & Accessories:</h5>
+              <p id="detailDescription" style="font-size: 0.9rem; color: var(--text-main); line-height: 1.5; background: #fafaf9; border: 1.5px solid var(--border-color); padding: 0.85rem; border-radius: var(--radius-md);">
+                Description details...
+              </p>
+            </div>
+
+            <!-- Sell as Rent (Rent-to-Own) Buyout Block -->
+            <div id="detailSellAsRentBlock" style="margin-bottom: 1.25rem; background: #fef8e7; border: 1.5px solid #e2c266; border-radius: var(--radius-md); padding: 0.95rem; display: none;">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
+                <div>
+                  <div style="font-size: 0.88rem; font-weight: 800; color: #8c680a; display: flex; align-items: center; gap: 0.35rem;">
+                    <i class="fa-solid fa-tags" style="color: #c59b27;"></i> Sell as Rent (Rent-to-Own) Available!
+                  </div>
+                  <div style="font-size: 0.8rem; color: #5a6a80; margin-top: 0.2rem;">Renting and want to keep it permanently? You can buy it outright anytime.</div>
+                </div>
+                <div style="text-align: right; min-width: 90px;">
+                  <span style="font-size: 0.74rem; color: #8c680a; display: block; font-weight: 800; text-transform: uppercase;">Buyout Price</span>
+                  <span id="detailBuyoutPrice" style="font-size: 1.35rem; font-weight: 900; color: #0b1c36;">₹0</span>
+                </div>
+              </div>
+              <button type="button" class="btn btn-accent" id="buyoutItemBtn" style="width: 100%; margin-top: 0.75rem; padding: 0.7rem 1rem; font-size: 0.92rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                <i class="fa-solid fa-cart-shopping"></i> Buy Now (Outright Purchase) &bull; New Tab
+              </button>
+            </div>
+
+            <!-- Booking / Rent Calculator Form -->
+            <div class="rental-calculator-box">
+              <h4 style="font-size: 1rem; font-weight: 800; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.45rem;">
+                <i class="fa-solid fa-calculator" style="color: var(--primary-color);"></i>
+                Calculate Dates & Price
+              </h4>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 0.85rem;">
+                <div>
+                  <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 0.25rem;">Start Date</label>
+                  <input type="date" id="rentStartDate" class="form-input" style="padding: 0.45rem 0.75rem; font-size: 0.88rem;">
+                </div>
+                <div>
+                  <label style="font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 0.25rem;">End Date</label>
+                  <input type="date" id="rentEndDate" class="form-input" style="padding: 0.45rem 0.75rem; font-size: 0.88rem;">
+                </div>
+              </div>
+
+              <div class="calc-row">
+                <span>Rental Duration:</span>
+                <span id="calcDuration">1 day</span>
+              </div>
+              <div class="calc-row">
+                <span>Rent Amount (<span id="calcDaysRate">1 × ₹150</span>):</span>
+                <span id="calcRentSubtotal">₹150</span>
+              </div>
+              <div class="calc-row">
+                <span>Refundable Deposit:</span>
+                <span id="calcDeposit">₹500</span>
+              </div>
+              <div class="calc-row calc-total">
+                <span>Total Amount Due:</span>
+                <span id="calcTotalDue">₹650</span>
+              </div>
+
+              <button class="btn btn-primary" id="confirmRentalRequestBtn" style="width: 100%; margin-top: 1rem; padding: 0.9rem; font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                <i class="fa-solid fa-bolt"></i> Buy Now / Rent Item (Open Checkout in New Tab)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       AUTH MODAL (LOG IN / REGISTER & KYC DETAILS)
+       ===================================================================== -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-container" style="max-width: 560px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <img src="assets/logo.jpg" alt="ABHIVERA Logo" style="width: 38px; height: 38px; border-radius: var(--radius-sm); object-fit: cover; border: 1px solid #f59e0b;">
+          <h3 class="modal-title" id="authModalTitle" style="font-size: 1.25rem;">
+            Join & Verify on ABHIVERA
+          </h3>
+        </div>
+        <button class="modal-close-btn" id="closeAuthModalBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab-btn active" id="tabSignInBtn">Sign In</button>
+        <button type="button" class="auth-tab-btn" id="tabSignUpBtn">Create Account & Verify</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="demo-login-box">
+          <div>
+            <strong>⚡ 1-Click Instant Demo Access</strong>
+            <p>Test as resident member <strong>Aditi Verma (Bangalore)</strong></p>
+          </div>
+          <button type="button" class="btn btn-primary" id="quickDemoLoginBtn" style="padding: 0.45rem 0.95rem; font-size: 0.82rem; white-space: nowrap;">
+            Demo Login
+          </button>
+        </div>
+
+        <form id="signInForm">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="loginEmail">Email Address or Mobile Number <span class="req">*</span></label>
+            <input type="text" id="loginEmail" class="form-input" placeholder="e.g. aditi.verma@example.com or 9845012345" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label class="form-label" for="loginPassword">Password <span class="req">*</span></label>
+            <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem;">
+            <i class="fa-solid fa-right-to-bracket"></i> Sign In to ABHIVERA
+          </button>
+          
+          <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 1.15rem;">
+            New to ABHIVERA? <a href="#" id="switchToRegisterLink" style="color: var(--primary-color); font-weight: 800;">Create an account with KYC verification</a>
+          </p>
+        </form>
+
+        <form id="signUpForm" style="display: none;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Short-term appliance rentals require verified identities to safeguard high-value electronics and refundable deposits.
+          </p>
+
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label class="form-label" for="regFullName">Full Legal Name <span class="req">*</span></label>
+              <input type="text" id="regFullName" class="form-input" placeholder="e.g. Rahul Sharma" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regEmail">Email Address <span class="req">*</span></label>
+              <input type="email" id="regEmail" class="form-input" placeholder="name@domain.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regPhone">Mobile Number (WhatsApp) <span class="req">*</span></label>
+              <input type="tel" id="regPhone" class="form-input" placeholder="+91 98765 43210" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regCity">City <span class="req">*</span></label>
+              <input type="text" id="regCity" class="form-input" placeholder="e.g. Bangalore" value="Bangalore" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regArea">Locality / Neighborhood <span class="req">*</span></label>
+              <input type="text" id="regArea" class="form-input" placeholder="e.g. Koramangala 4th Block" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regGovIdType">Identity Verification Proof <span class="req">*</span></label>
+              <select id="regGovIdType" class="form-select" required>
+                <option value="Aadhaar Card">Aadhaar Card</option>
+                <option value="Voter ID Card">Voter ID Card</option>
+                <option value="Driving License">Driving License</option>
+                <option value="Passport">Passport</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regGovIdNumber">ID Number / Last 4 Digits <span class="req">*</span></label>
+              <input type="text" id="regGovIdNumber" class="form-input" placeholder="e.g. XXXX-XXXX-4589" required>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="regRole">I plan to: <span class="req">*</span></label>
+              <select id="regRole" class="form-select" required>
+                <option value="Rent & Lend Both">Both Rent and Lend Items (Recommended)</option>
+                <option value="Only Rent Items">Only Rent / Borrow Items</option>
+                <option value="Only Lend Items">Only Lend My Appliances to Earn</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label" for="regPassword">Create Password <span class="req">*</span></label>
+              <input type="password" id="regPassword" class="form-input" placeholder="At least 6 characters" minlength="6" required>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.25rem;">
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem;">
+              <i class="fa-solid fa-user-check"></i> Register & Verify Profile
+            </button>
+          </div>
+
+          <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 1.15rem;">
+            Already have an account? <a href="#" id="switchToSignInLink" style="color: var(--primary-color); font-weight: 800;">Sign in here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       USER PROFILE & KYC DETAILS MODAL
+       ===================================================================== -->
+  <div class="modal-overlay" id="profileModal">
+    <div class="modal-container" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-solid fa-circle-user" style="color: var(--primary-color);"></i>
+          My ABHIVERA User Profile & KYC
+        </h3>
+        <button class="modal-close-btn" id="closeProfileModalBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; background: #fef8e7; border: 1.5px solid #e8e2d5; padding: 1.25rem; border-radius: var(--radius-lg);">
+          <div class="user-avatar" id="profileModalAvatar" style="width: 56px; height: 56px; font-size: 1.35rem;">AV</div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.45rem;">
+              <h3 id="profileModalFullName" style="font-size: 1.35rem; font-weight: 900; color: var(--text-main); margin: 0;">Aditi Verma</h3>
+              <span style="background: #d1fae5; color: #065f46; font-size: 0.74rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: 0.25rem;">
+                <i class="fa-solid fa-check"></i> VERIFIED USER
+              </span>
+            </div>
+            <p id="profileModalRole" style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.2rem;">Community Member • Rent & Lend Both</p>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="profile-card-field">
+            <div class="profile-card-label">Email Address</div>
+            <div class="profile-card-val" id="profileModalEmail">aditi.verma@example.com</div>
+          </div>
+
+          <div class="profile-card-field">
+            <div class="profile-card-label">Registered Mobile</div>
+            <div class="profile-card-val" id="profileModalPhone">+91 98450 12345</div>
+          </div>
+
+          <div class="profile-card-field">
+            <div class="profile-card-label">City & Locality</div>
+            <div class="profile-card-val" id="profileModalLocation">Koramangala, Bangalore</div>
+          </div>
+
+          <div class="profile-card-field">
+            <div class="profile-card-label">Verified KYC Proof</div>
+            <div class="profile-card-val" id="profileModalGovId">Aadhaar (XXXX-4589)</div>
+          </div>
+
+          <div class="profile-card-field full-width">
+            <div class="profile-card-label">Rental Safety Guarantee Status</div>
+            <div class="profile-card-val" style="color: #065f46; font-size: 0.9rem; font-weight: 700;">
+              <i class="fa-solid fa-shield-halved" style="color: #10b981; margin-right: 0.35rem;"></i> 100% Deposit Protection & Verified Renter Badge Active
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.85rem; margin-top: 1.35rem;">
+          <button type="button" class="btn btn-outline" id="profileViewActivityBtn" style="flex: 1;">
+            <i class="fa-solid fa-clock-rotate-left"></i> View My Activity
+          </button>
+          <button type="button" class="btn btn-outline" id="profileLogoutBtn" style="color: #ef4444; border-color: #fca5a5;">
+            <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       ACTIVITY / DASHBOARD DRAWER (MY LISTINGS, BOOKINGS & WISHLIST)
+       ===================================================================== -->
+  <div class="drawer-overlay" id="activityDrawerOverlay">
+    <aside class="activity-drawer">
+      <div class="drawer-header">
+        <h3 style="font-size: 1.25rem; font-weight: 900; display: flex; align-items: center; gap: 0.55rem;">
+          <i class="fa-solid fa-bolt" style="color: var(--primary-color);"></i>
+          My Activity & Saved
+        </h3>
+        <button class="modal-close-btn" id="closeActivityDrawerBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="drawer-tabs">
+        <button class="drawer-tab active" data-tab="rentals" id="tabRentalsBtn">
+          Bookings (<span id="myBookingsCount">0</span>)
+        </button>
+        <button class="drawer-tab" data-tab="listings" id="tabListingsBtn">
+          Listings (<span id="myListingsCount">0</span>)
+        </button>
+        <button class="drawer-tab" data-tab="wishlist" id="tabWishlistBtn">
+          Wishlist (<span id="myWishlistDrawerCount">0</span>)
+        </button>
+      </div>
+
+      <div class="drawer-content" id="drawerContentList">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </aside>
+  </div>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem;">
+            <img src="assets/logo.jpg" alt="ABHIVERA Logo" class="footer-brand-logo-img">
+            <h3 style="margin: 0; font-size: 1.65rem; font-weight: 900;">ABHI<span style="color: var(--primary-color);">VERA</span></h3>
+          </div>
+          <p>
+            Your neighborhood short-term rental network for home appliances, kitchen utensils, electronics, and linens. Save money, reduce clutter, and make living effortless.
+          </p>
+          <div style="display: flex; gap: 0.85rem; font-size: 1.25rem;">
+            <a href="#" style="color: #a1a1aa;"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" style="color: #a1a1aa;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" style="color: #a1a1aa;"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" style="color: #a1a1aa;"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Popular Rentals</h4>
+          <ul class="footer-links">
+            <li><a href="#marketplace">Mixer Grinders & Blenders</a></li>
+            <li><a href="#marketplace">Party Utensils & Pots</a></li>
+            <li><a href="#marketplace">Guest Mattress & Comforters</a></li>
+            <li><a href="#marketplace">Portable Projectors & Audio</a></li>
+            <li><a href="#marketplace">Steam Irons & Cleaners</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community & Safety</h4>
+          <ul class="footer-links">
+            <li><a href="#">Lender Protection Guarantee</a></li>
+            <li><a href="#">Condition Check Guidelines</a></li>
+            <li><a href="#">Security Deposit Policy</a></li>
+            <li><a href="#">Hygiene & Cleaning Standards</a></li>
+            <li><a href="#">Terms & Rental Agreement</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Need Assistance?</h4>
+          <p style="font-size: 0.9rem; margin-bottom: 0.85rem;">
+            Questions about renting or listing an item on ABHIVERA?
+          </p>
+          <div style="font-size: 0.9rem; color: #cbd5e1; display: flex; flex-direction: column; gap: 0.45rem;">
+            <div><i class="fa-solid fa-envelope" style="color: var(--primary-color); margin-right: 0.45rem;"></i> support@abhivera.com</div>
+            <div><i class="fa-solid fa-phone" style="color: var(--primary-color); margin-right: 0.45rem;"></i> +91 (800) ABHIVERA</div>
+            <div><i class="fa-solid fa-location-dot" style="color: var(--primary-color); margin-right: 0.45rem;"></i> Bangalore & Major Metros</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 ABHIVERA Technologies Inc. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Safety Center</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
